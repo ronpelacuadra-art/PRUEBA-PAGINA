@@ -17,7 +17,1174 @@
   <title>Fotolab - Agencia Creativa</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" hr<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    
+
+  </head>
+    
+  <body>
+  <!doctype html>
+<html lang="es" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fotolab - Agencia Creativa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    .font-display {
+      font-family: 'Bebas Neue', sans-serif;
+    }
+    
+    .font-body {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #f89aac 0%, #7bbddf 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px);
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #f89aac, #7bbddf);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .portfolio-item {
+      overflow: hidden;
+    }
+    
+    .portfolio-item img {
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .portfolio-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #f89aac 0%, #7bbddf 100%);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 40px -10px rgba(248, 154, 172, 0.4);
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .stagger-1 { animation-delay: 0s; }
+    .stagger-2 { animation-delay: 2s; }
+    .stagger-3 { animation-delay: 4s; }
+    
+    .scroll-smooth {
+      scroll-behavior: smooth;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .whatsapp-pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      50% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body bg-neutral-950 text-white scroll-smooth overflow-auto">
+  <div class="w-full min-h-full"><!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 bg-neutral-950/80 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"><a href="#" class="font-display text-3xl tracking-wider">FOTOLAB STUDIO</a>
+     <div class="hidden md:flex items-center gap-8"><a href="#inicio" class="nav-link text-sm font-medium text-neutral-300 hover:text-white transition-colors">Inicio</a> <a href="#servicios" class="nav-link text-sm font-medium text-neutral-300 hover:text-white transition-colors">Servicios</a> <a href="#paquetes" class="nav-link text-sm font-medium text-neutral-300 hover:text-white transition-colors">Paquetes</a> <a href="#portafolio" class="nav-link text-sm font-medium text-neutral-300 hover:text-white transition-colors">Portafolio</a> <a href="#contacto" class="nav-link text-sm font-medium text-neutral-300 hover:text-white transition-colors">Contacto</a>
+     </div><a href="#contacto" class="btn-primary px-6 py-2.5 rounded-full text-sm font-semibold text-neutral-900"> Hablemos </a>
+    </div>
+   </nav>
+   
+   <!-- Hero Section - MODIFICADA: Título y párrafo sobre el video, botones debajo -->
+   <section id="inicio" class="relative min-h-screen flex flex-col">
+     <!-- Contenedor del video - FULL-SCREEN -->
+     <div class="relative w-full h-screen overflow-hidden">
+       <!-- Video de fondo full-screen -->
+       <div class="absolute inset-0 w-full h-full z-0">
+         <iframe 
+           class="w-full h-full"
+           style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; pointer-events: auto;"
+           src="https://www.canva.com/design/DAG-ywIKaSA/jY7st20VWXGoXcEf8snQSg/watch?embed&autoplay=1&mute=1&loop=1" 
+           allowfullscreen 
+           allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop"
+           title="Fotolab Studio Reel">
+         </iframe>
+         <!-- Overlay oscuro para legibilidad (NO bloquea clicks) -->
+         <div class="absolute inset-0 bg-black/40 z-0 pointer-events-none"></div>
+       </div>
+       
+       <!-- Contenedor de textos superpuestos - MÁS ARRIBA (bottom-32) -->
+       <div class="absolute bottom-32 left-1/2 -translate-x-1/2 z-10 w-full max-w-5xl px-6 text-center pointer-events-none">
+         <!-- Título principal -->
+         <h1 id="hero-title" class="font-display text-4xl md:text-6xl lg:text-7xl leading-none tracking-tight mb-4">
+           EL <span class="gradient-text">LABORATORIO</span> DONDE TU MARCA COBRA VIDA
+         </h1>
+         <!-- Párrafo justo debajo del título (mb-2 controla el espacio) -->
+         <p id="hero-subtitle" class="text-neutral-200 text-lg md:text-xl max-w-3xl mx-auto">
+           En Fotolab creamos fotografía y video con intención: piezas pensadas para llamar la atención, generar conexión y convertir vistas en clientes.
+         </p>
+       </div>
+       
+       <!-- Scroll Indicator (mantenido) -->
+       <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
+         <div class="w-6 h-10 border-2 border-white/40 rounded-full flex items-start justify-center p-2 pointer-events-none">
+           <div class="w-1 h-2 bg-white/80 rounded-full animate-bounce pointer-events-none"></div>
+         </div>
+       </div>
+     </div>
+     
+     <!-- Botones DEBAJO del video -->
+     <div class="relative z-10 bg-neutral-950 py-16 px-6">
+       <div class="max-w-4xl mx-auto text-center">
+         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+           <a href="https://wa.me/573027365200" target="_blank" rel="noopener noreferrer" class="whatsapp-pulse bg-green-500 hover:bg-green-600 inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full font-semibold text-white shadow-2xl hover:scale-105 transition-all text-lg">
+             <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+             </svg> Hablemos de tu marca 
+           </a> 
+           <a href="#servicios" class="px-10 py-4 rounded-full font-semibold border border-white/30 hover:bg-white/10 transition-colors text-white"> Lo que hacemos </a>
+         </div>
+       </div>
+     </div>
+   </section>
+
+   <!-- Services Section (sin cambios) -->
+   <section id="servicios" class="py-24 md:py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-16">
+      <h2 class="font-display text-5xl md:text-7xl tracking-tight mb-6">LO QUE HACEMOS</h2>
+      <p class="text-neutral-400 text-lg md:text-xl max-w-3xl mx-auto">Ayudamos a marcas, emprendedores y creadores a verse profesionales, relevantes y memorables en redes sociales y plataformas digitales.</p>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+      <div class="text-center">
+       <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-pink-500/20 to-blue-500/20 flex items-center justify-center">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+        </svg>
+       </div>
+       <h3 class="font-semibold text-lg mb-2">Videos de Alto Impacto</h3>
+       <p class="text-neutral-500 text-sm">Para Instagram, TikTok y YouTube Shorts</p>
+      </div>
+      <div class="text-center">
+       <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-blue-500/20 to-pink-500/20 flex items-center justify-center">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+       </div>
+       <h3 class="font-semibold text-lg mb-2">Fotografía Profesional</h3>
+       <p class="text-neutral-500 text-sm">De producto, marca y lifestyle</p>
+      </div>
+      <div class="text-center">
+       <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-pink-500/20 to-blue-500/20 flex items-center justify-center">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 4V2m10 2V2M3 8h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z" />
+        </svg>
+       </div>
+       <h3 class="font-semibold text-lg mb-2">Contenido Mensual</h3>
+       <p class="text-neutral-500 text-sm">Para redes sociales</p>
+      </div>
+      <div class="text-center">
+       <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-blue-500/20 to-pink-500/20 flex items-center justify-center">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        </svg>
+       </div>
+       <h3 class="font-semibold text-lg mb-2">Dirección Creativa</h3>
+       <p class="text-neutral-500 text-sm">Y acompañamiento estratégico</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Packages Section -->
+   <section id="paquetes" class="py-24 md:py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-neutral-500 font-medium tracking-widest uppercase mb-4 text-sm">Pensados para marcas que quieren crecer</p>
+      <h2 id="packages-title" class="font-display text-5xl md:text-7xl tracking-tight mb-6">PAQUETES DE CONTENIDO</h2>
+      <p class="text-neutral-400 text-lg max-w-2xl mx-auto">Pensados para marcas que quieren crecer, vender y diferenciarse.</p>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"><!-- Package 1 -->
+      <div class="card-hover bg-white/[0.03] border border-white/10 rounded-3xl p-8 relative overflow-hidden group">
+       <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-500/10 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+       <div class="relative z-10">
+        <div class="w-12 h-12 mb-4 rounded-xl bg-gradient-to-br from-pink-500/20 to-blue-500/20 flex items-center justify-center"><span class="text-2xl">🎬</span>
+        </div>
+        <h3 id="package-1-title" class="font-display text-3xl mb-2">4 VIDEOS</h3>
+        <p id="package-1-subtitle" class="text-neutral-500 mb-6 text-sm">Contenido ágil y optimizado</p>
+        <ul class="space-y-3 mb-8 text-sm">
+         <li class="flex items-start gap-2 text-neutral-300">
+          <svg class="w-4 h-4 text-pink-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg><span id="package-1-feature-1">4 videos profesionales (15-60s)</span></li>
+         <li class="flex items-start gap-2 text-neutral-300">
+          <svg class="w-4 h-4 text-pink-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg><span id="package-1-feature-2">Edición dinámica y color</span></li>
+         <li class="flex items-start gap-2 text-neutral-300">
+          <svg class="w-4 h-4 text-pink-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg><span id="package-1-feature-3">Formatos vertical y horizontal</span></li>
+         <li class="flex items-start gap-2 text-neutral-300">
+          <svg class="w-4 h-4 text-pink-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg><span id="package-1-feature-4">1 ronda de ajustes</span></li>
+        </ul><a href="https://wa.me/573027365200?text=Hola,%20me%20interesa%20el%20paquete%20de%204%20videos" target="_blank" rel="noopener noreferrer" class="block w-full py-3 text-center border border-white/20 rounded-full font-semibold hover:bg-white/5 transition-colors text-sm"> <span id="package-1-cta">Elegir plan</span> </a>
+       </div>
+      </div><!-- Package 2 -->
+      <div class="card-hover bg-white/[0.03] border border-white/10 rounded-3xl p-8 relative overflow-hidden group">
+       <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+       <div class="relative z-10">
+        <div class="w-12 h-12 mb-4 rounded-xl bg-gradient-to-br from-blue-500/20 to-pink-500/20 flex items-center justify-center"><span class="text-2xl">🎬</span>
+        </div>
+        <h3 id="package-2-title" class="font-display text-3xl mb-2">8 VIDEOS</h3>
+        <p id="package-2-subtitle" class="text-neutral-500 mb-6 text-sm">Presencia constante</p>
+        <ul class="space-y-3 mb-8 text-sm">
+         <li class="flex items-start gap-2 text-neutral-300">
+          <svg class="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg><span id="package-2-feature-1">8 videos optimizados</span></li>
+         <li class="flex items-start gap-2 text-neutral-300">
+          <svg class="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg><span id="package-2-feature-2">Edición avanzada y gráficos</span></li>
+         <li class="flex items-start gap-2 text-neutral-300">
+          <svg class="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg><span id="package-2-feature-3">Música sin derechos</span></li>
+         <li class="flex items-start gap-2 text-neutral-300">
+          <svg class="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg><span id="package-2-feature-4">2 rondas de cambios</span></li>
+        </ul><a href="https://wa.me/573027365200?text=Hola,%20me%20interesa%20el%20paquete%20de%208%20videos" target="_blank" rel="noopener noreferrer" class="block w-full py-3 text-center border border-white/20 rounded-full font-semibold hover:bg-white/5 transition-colors text-sm"> <span id="package-2-cta">Elegir plan</span> </a>
+       </div>
+      </div><!-- Package 3 -->
+      <div class="card-hover bg-gradient-to-b from-white/[0.08] to-white/[0.03] border border-white/20 rounded-3xl p-8 relative overflow-hidden group">
+       <div class="absolute -top-1 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-pink-500 to-blue-500 rounded-b-lg text-xs font-bold text-white tracking-wider uppercase">
+        Popular
+       </div>
+       <div class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-pink-500/20 to-transparent rounded-full blur-3xl"></div>
+       <div class="relative z-10 pt-4">
+        <div class="w-12 h-12 mb-4 rounded-xl bg-gradient-to-br from-pink-500/30 to-blue-500/30 flex items-center justify-center"><span class="text-2xl">📷</span>
+        </div>
+        <h3 id="package-3-title" class="font-display text-3xl mb-2">4 VIDEOS + FOTO</h3>
+        <p id="package-3-subtitle" class="text-neutral-400 mb-6 text-sm">Video y foto juntos</p>
+        <ul class="space-y-3 mb-8 text-sm">
+         <li class="flex items-start gap-2 text-neutral-200">
+          <svg class="w-4 h-4 text-pink-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg><span id="package-3-feature-1">4 videos profesionales</span></li>
+         <li class="flex items-start gap-2 text-neutral-200">
+          <svg class="w-4 h-4 text-pink-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg><span id="package-3-feature-2">20 fotografías editadas</span></li>
+         <li class="flex items-start gap-2 text-neutral-200">
+          <svg class="w-4 h-4 text-pink-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg><span id="package-3-feature-3">Estilo visual coherente</span></li>
+         <li class="flex items-start gap-2 text-neutral-200">
+          <svg class="w-4 h-4 text-pink-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg><span id="package-3-feature-4">1 ronda de ajustes</span></li>
+        </ul><a href="https://wa.me/573027365200?text=Hola,%20me%20interesa%20el%20paquete%20de%204%20videos%20+%20foto" target="_blank" rel="noopener noreferrer" class="btn-primary block w-full py-3 text-center rounded-full font-semibold text-white text-sm"> <span id="package-3-cta">Empezar ahora</span> </a>
+       </div>
+      </div><!-- Package 4 -->
+      <div class="card-hover bg-white/[0.03] border border-white/10 rounded-3xl p-8 relative overflow-hidden group">
+       <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+       <div class="relative z-10">
+        <div class="w-12 h-12 mb-4 rounded-xl bg-gradient-to-br from-blue-500/20 to-pink-500/20 flex items-center justify-center"><span class="text-2xl">📷🎬</span>
+        </div>
+        <h3 id="package-4-title" class="font-display text-3xl mb-2">8 VIDEOS + FOTO</h3>
+        <p id="package-4-subtitle" class="text-neutral-500 mb-6 text-sm">Solución completa</p>
+        <ul class="space-y-3 mb-8 text-sm">
+         <li class="flex items-start gap-2 text-neutral-300">
+          <svg class="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg><span id="package-4-feature-1">8 videos profesionales</span></li>
+         <li class="flex items-start gap-2 text-neutral-300">
+          <svg class="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg><span id="package-4-feature-2">40 fotografías de alta calidad</span></li>
+         <li class="flex items-start gap-2 text-neutral-300">
+          <svg class="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg><span id="package-4-feature-3">Dirección creativa avanzada</span></li>
+         <li class="flex items-start gap-2 text-neutral-300">
+          <svg class="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg><span id="package-4-feature-4">2 rondas de ajustes</span></li>
+        </ul><a href="https://wa.me/573027365200?text=Hola,%20me%20interesa%20el%20paquete%20de%208%20videos%20+%20foto" target="_blank" rel="noopener noreferrer" class="block w-full py-3 text-center border border-white/20 rounded-full font-semibold hover:bg-white/5 transition-colors text-sm"> <span id="package-4-cta">Elegir plan</span> </a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Brands Section -->
+   <section class="py-24 md:py-32 px-6 bg-white/[0.02]">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-neutral-500 font-medium tracking-widest uppercase mb-4 text-sm">Confianza que respalda</p>
+      <h2 class="font-display text-5xl md:text-7xl tracking-tight mb-6">MARCAS CON LAS QUE HEMOS TRABAJADO</h2>
+     </div>
+     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto"><!-- Forever 21 -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-2xl tracking-tight">FOREVER <span class="gradient-text">21</span></p>
+       </div>
+      </div><!-- Tecno Mobile -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-2xl tracking-tight">TECNO</p>
+        <p class="text-xs text-neutral-500 mt-1">MOBILE</p>
+       </div>
+      </div><!-- Xiaomi -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-2xl tracking-tight">XIAOMI</p>
+       </div>
+      </div><!-- JAC -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-2xl tracking-tight">JAC</p>
+       </div>
+      </div><!-- Jetour -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-2xl tracking-tight">JETOUR</p>
+       </div>
+      </div><!-- KIA -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-2xl tracking-tight">KIA</p>
+       </div>
+      </div><!-- Bajaj -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-2xl tracking-tight">BAJAJ</p>
+       </div>
+      </div><!-- Chevyplan -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-xl tracking-tight">CHEVYPLAN</p>
+       </div>
+      </div><!-- Fujifilm -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-xl tracking-tight">FUJIFILM</p>
+       </div>
+      </div><!-- Canal TRO -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-2xl tracking-tight">CANAL <span class="gradient-text">TRO</span></p>
+       </div>
+      </div><!-- Mitsubishi -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-xl tracking-tight">MITSUBISHI</p>
+       </div>
+      </div><!-- Presto -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-2xl tracking-tight">PRESTO</p>
+       </div>
+      </div><!-- Nutribela -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-xl tracking-tight">NUTRIBELA</p>
+       </div>
+      </div><!-- Skydropx -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-xl tracking-tight">SKYDROPX</p>
+       </div>
+      </div><!-- Fluency -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-2xl tracking-tight">FLUENCY</p>
+       </div>
+      </div><!-- Amper -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-2xl tracking-tight">AMPER</p>
+       </div>
+      </div><!-- Yupi -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-2xl tracking-tight gradient-text">YUPI</p>
+       </div>
+      </div><!-- Rikomate -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-xl tracking-tight">RIKOMATE</p>
+       </div>
+      </div><!-- Disfarma -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-xl tracking-tight">DISFARMA</p>
+       </div>
+      </div><!-- Carbo Brik -->
+      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer">
+       <div class="text-center">
+        <p class="font-display text-xl tracking-tight">CARBO BRIK</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Why Fotolab Section -->
+   <section class="py-24 md:py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-16">
+      <h2 id="why-title" class="font-display text-5xl md:text-7xl tracking-tight mb-6">¿POR QUÉ FOTOLAB?</h2>
+      <p class="text-neutral-400 text-lg md:text-xl max-w-3xl mx-auto">Porque no solo grabamos y tomamos fotos. Pensamos, creamos y ejecutamos contenido con estrategia.</p>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+      <div class="text-center">
+       <div class="text-5xl mb-4">
+        🎬
+       </div>
+       <h3 class="font-semibold text-xl mb-2">+13 Años</h3>
+       <p class="text-neutral-500 text-sm">Creando contenido audiovisual</p>
+      </div>
+      <div class="text-center">
+       <div class="text-5xl mb-4">
+        📱
+       </div>
+       <h3 class="font-semibold text-xl mb-2">Enfoque Real</h3>
+       <p class="text-neutral-500 text-sm">En redes sociales y resultados</p>
+      </div>
+      <div class="text-center">
+       <div class="text-5xl mb-4">
+        ✨
+       </div>
+       <h3 class="font-semibold text-xl mb-2">Estética Cuidada</h3>
+       <p class="text-neutral-500 text-sm">Y storytelling visual</p>
+      </div>
+      <div class="text-center">
+       <div class="text-5xl mb-4">
+        🔥
+       </div>
+       <h3 class="font-semibold text-xl mb-2">Procesos Claros</h3>
+       <p class="text-neutral-500 text-sm">Y entregas rápidas</p>
+      </div>
+     </div>
+     <div class="text-center mt-12">
+      <p class="text-neutral-400 text-lg">Trabajamos como el equipo creativo de tu marca.</p>
+     </div>
+    </div>
+   </section><!-- Portfolio Section -->
+   <section id="portafolio" class="bg-neutral-950 py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="font-display text-5xl md:text-7xl tracking-tight mb-6 text-center">NUESTRO TRABAJO</h2>
+      <p class="text-neutral-400 text-lg md:text-xl text-center max-w-3xl mx-auto mb-16">
+        Cada proyecto es una oportunidad para contar una historia visual única.
+      </p>
+
+      <!-- VIDEOS VERTICALES - 4 a la vez -->
+      <div class="mb-20">
+        <h3 class="text-2xl md:text-3xl font-semibold mb-8 text-neutral-200">Videos Verticales</h3>
+        <div class="relative">
+          <button onclick="slidePortfolio('vertical', -1)" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full backdrop-blur text-2xl transition-all">‹</button>
+          <div id="vertical-slider" class="flex gap-4 overflow-x-hidden scroll-smooth">
+            
+            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-[9/16] w-full rounded-[1rem] overflow-hidden relative">
+                  <iframe loading="lazy" class="portfolio-video"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    src="https://www.canva.com/design/DAG-_yI6ApE/lYWuASp84PB5_dCm5LTF9Q/watch?embed&autoplay=1&mute=1&loop=1"
+                    allowfullscreen
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
+                  </iframe>
+                </div>
+              </div>
+            </div>
+            
+            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-[9/16] w-full rounded-[1rem] overflow-hidden relative">
+                  <iframe loading="lazy" class="portfolio-video"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    src="https://www.canva.com/design/DAG-_aeQEFw/B1S__Vp61UQeGuX-jiAD3Q/watch?embed&autoplay=1&mute=1&loop=1"
+                    allowfullscreen
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
+                  </iframe>
+                </div>
+              </div>
+            </div>
+            
+            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-[9/16] w-full rounded-[1rem] overflow-hidden relative">
+                  <iframe loading="lazy" class="portfolio-video"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    src="https://www.canva.com/design/DAG-_ViZBIQ/vbYtRhaWtKnsjrZvH-Ftxw/watch?embed&autoplay=1&mute=1&loop=1"
+                    allowfullscreen
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
+                  </iframe>
+                </div>
+              </div>
+            </div>
+            
+            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-[9/16] w-full rounded-[1rem] overflow-hidden relative">
+                  <iframe loading="lazy" class="portfolio-video"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    src="https://www.canva.com/design/DAG-_ZDmjzQ/8h072vROP--CWvPkZs5ZlA/watch?embed&autoplay=1&mute=1&loop=1"
+                    allowfullscreen
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
+                  </iframe>
+                </div>
+              </div>
+            </div>
+            
+            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-[9/16] w-full rounded-[1rem] overflow-hidden relative">
+                  <iframe loading="lazy" class="portfolio-video"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    src="https://www.canva.com/design/DAG-_fL2jEA/Mph9VFQBa4e27NkX-aczYg/watch?embed&autoplay=1&mute=1&loop=1"
+                    allowfullscreen
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
+                  </iframe>
+                </div>
+              </div>
+            </div>
+            
+            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-[9/16] w-full rounded-[1rem] overflow-hidden relative">
+                  <iframe loading="lazy" class="portfolio-video"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    src="https://www.canva.com/design/DAG-_ag0v-M/xRK37Mh2z3wcleiwJhdy6g/watch?embed&autoplay=1&mute=1&loop=1"
+                    allowfullscreen
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
+                  </iframe>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <button onclick="slidePortfolio('vertical', 1)" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full backdrop-blur text-2xl transition-all">›</button>
+        </div>
+      </div>
+
+      <!-- VIDEOS HORIZONTALES - 2 a la vez -->
+      <div class="mb-20">
+        <h3 class="text-2xl md:text-3xl font-semibold mb-8 text-neutral-200">Videos Horizontales</h3>
+        <div class="relative">
+          <button onclick="slidePortfolio('horizontal', -1)" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full backdrop-blur text-2xl transition-all">‹</button>
+          <div id="horizontal-slider" class="flex gap-4 overflow-x-hidden scroll-smooth">
+            
+            <div class="min-w-[calc(50%-8px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-video w-full rounded-[1rem] overflow-hidden relative">
+                  <iframe loading="lazy" class="portfolio-video"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    src="https://www.canva.com/design/DAG-_LBMhuM/Cl_W1YaqWFys3ndw0xsM6A/watch?embed&autoplay=1&mute=1&loop=1"
+                    allowfullscreen
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
+                  </iframe>
+                </div>
+              </div>
+            </div>
+            
+            <div class="min-w-[calc(50%-8px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-video w-full rounded-[1rem] overflow-hidden relative">
+                  <iframe loading="lazy" class="portfolio-video"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    src="https://www.canva.com/design/DAG-_mBMQs4/l9TySmu24rkvsoz5rdAllg/watch?embed&autoplay=1&mute=1&loop=1"
+                    allowfullscreen
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
+                  </iframe>
+                </div>
+              </div>
+            </div>
+            
+            <div class="min-w-[calc(50%-8px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-video w-full rounded-[1rem] overflow-hidden relative">
+                  <iframe loading="lazy" class="portfolio-video"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    src="https://www.canva.com/design/DAG-_z1svKM/cfgwWM9z-fgJjuX0q0c0mw/watch?embed&autoplay=1&mute=1&loop=1"
+                    allowfullscreen
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
+                  </iframe>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <button onclick="slidePortfolio('horizontal', 1)" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full backdrop-blur text-2xl transition-all">›</button>
+        </div>
+      </div>
+
+      <!-- FOTOS - 4 a la vez -->
+      <div class="mb-20">
+        <h3 class="text-2xl md:text-3xl font-semibold mb-8 text-center mt-20 text-neutral-200">Fotos</h3>
+        <div class="relative">
+          <button onclick="slidePortfolio('photos', -1)" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full backdrop-blur text-2xl transition-all">‹</button>
+          <div id="photos-slider" class="flex gap-4 overflow-x-hidden scroll-smooth">
+            
+            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500 overflow-hidden group">
+                <div class="aspect-square w-full rounded-[1rem] overflow-hidden relative">
+                  <img src="https://images.unsplash.com/photo-1502876780353-7e6692767b70?w=400&h=400&fit=crop" 
+                       alt="Foto de auto" 
+                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+              </div>
+            </div>
+            
+            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500 overflow-hidden group">
+                <div class="aspect-square w-full rounded-[1rem] overflow-hidden relative">
+                  <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=400&fit=crop" 
+                       alt="Foto de comida" 
+                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+              </div>
+            </div>
+            
+            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500 overflow-hidden group">
+                <div class="aspect-square w-full rounded-[1rem] overflow-hidden relative">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop" 
+                       alt="Foto de persona" 
+                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+              </div>
+            </div>
+            
+            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500 overflow-hidden group">
+                <div class="aspect-square w-full rounded-[1rem] overflow-hidden relative">
+                  <img src="https://images.unsplash.com/photo-1501084817091-a4f3d1d19e07?w=400&h=400&fit=crop" 
+                       alt="Foto de producto" 
+                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+              </div>
+            </div>
+            
+            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500 overflow-hidden group">
+                <div class="aspect-square w-full rounded-[1rem] overflow-hidden relative">
+                  <img src="https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?w=400&h=400&fit=crop" 
+                       alt="Foto de naturaleza" 
+                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+              </div>
+            </div>
+            
+            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500 overflow-hidden group">
+                <div class="aspect-square w-full rounded-[1rem] overflow-hidden relative">
+                  <img src="https://images.unsplash.com/photo-1514986888952-8cd320577b68?w=400&h=400&fit=crop" 
+                       alt="Foto de arquitectura" 
+                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+              </div>
+            </div>
+            
+            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500 overflow-hidden group">
+                <div class="aspect-square w-full rounded-[1rem] overflow-hidden relative">
+                  <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=400&h=400&fit=crop" 
+                       alt="Foto de tienda" 
+                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+              </div>
+            </div>
+            
+            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500 overflow-hidden group">
+                <div class="aspect-square w-full rounded-[1rem] overflow-hidden relative">
+                  <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&h=400&fit=crop" 
+                       alt="Foto de moda" 
+                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+              </div>
+            </div>
+            
+            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500 overflow-hidden group">
+                <div class="aspect-square w-full rounded-[1rem] overflow-hidden relative">
+                  <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400&h=400&fit=crop" 
+                       alt="Foto de comida 2" 
+                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+              </div>
+            </div>
+            
+            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500 overflow-hidden group">
+                <div class="aspect-square w-full rounded-[1rem] overflow-hidden relative">
+                  <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&h=400&fit=crop" 
+                       alt="Foto de personas" 
+                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <button onclick="slidePortfolio('photos', 1)" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full backdrop-blur text-2xl transition-all">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+  function slidePortfolio(type, direction) {
+    const slider = document.getElementById(type + '-slider');
+    if (!slider) return;
+    
+    // Determinar cuántos items mostrar según el tipo
+    let itemsToShow = 4; // Default para vertical y photos
+    if (type === 'horizontal') {
+      itemsToShow = 2;
+    }
+    
+    // Calcular el ancho de un item incluyendo el gap
+    const containerWidth = slider.offsetWidth;
+    const gap = 16; // gap-4 = 16px
+    const itemWidth = (containerWidth - (gap * (itemsToShow - 1))) / itemsToShow;
+    const scrollAmount = (itemWidth + gap) * itemsToShow;
+    
+    slider.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+  </script>
+  
+<!-- Contact Section -->
+   <section id="contacto" class="py-24 md:py-32 px-6">
+    <div class="max-w-4xl mx-auto">
+     <div class="text-center mb-16">
+      <h2 id="contact-title" class="font-display text-5xl md:text-7xl tracking-tight mb-6">HABLEMOS</h2>
+      <p class="text-neutral-400 text-lg max-w-2xl mx-auto">Si llegaste hasta aquí, tu marca ya va un paso adelante.</p>
+      <p class="text-neutral-500 mt-4">📩 Escríbenos y cuéntanos tu idea</p>
+     </div>
+     <form id="contact-form" class="space-y-6">
+      <div class="grid md:grid-cols-2 gap-6">
+       <div><label for="name" class="block text-sm font-medium text-neutral-400 mb-2">Nombre</label> <input type="text" id="name" name="name" required class="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30 transition-colors placeholder-neutral-600" placeholder="Tu nombre">
+       </div>
+       <div><label for="email" class="block text-sm font-medium text-neutral-400 mb-2">Email</label> <input type="email" id="email" name="email" required class="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30 transition-colors placeholder-neutral-600" placeholder="tu@email.com">
+       </div>
+      </div>
+      <div><label for="service" class="block text-sm font-medium text-neutral-400 mb-2">¿Qué servicio te interesa?</label> <select id="service" name="service" class="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30 transition-colors text-white appearance-none cursor-pointer"> <option value="" class="bg-neutral-900">Selecciona una opción</option> <option value="basico" class="bg-neutral-900">Paquete Básico</option> <option value="pro" class="bg-neutral-900">Paquete Pro</option> <option value="premium" class="bg-neutral-900">Paquete Premium</option> <option value="otro" class="bg-neutral-900">Otro / Proyecto especial</option> </select>
+      </div>
+      <div><label for="message" class="block text-sm font-medium text-neutral-400 mb-2">Mensaje</label> <textarea id="message" name="message" rows="5" class="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30 transition-colors placeholder-neutral-600 resize-none" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+      </div><button type="submit" class="btn-primary w-full py-5 rounded-xl font-semibold text-neutral-900 text-lg"> Enviar mensaje </button>
+     </form>
+     <div id="form-success" class="hidden text-center py-12">
+      <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-green-500/20 flex items-center justify-center">
+       <svg class="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+       </svg>
+      </div>
+      <h3 class="font-display text-3xl mb-2">¡MENSAJE ENVIADO!</h3>
+      <p class="text-neutral-400">Te responderemos pronto. ¡Gracias por contactarnos!</p>
+     </div>
+     <div class="mt-16 flex flex-wrap justify-center gap-8 text-neutral-500"><a href="mailto:fotolab.studio@gmail.com" class="flex items-center gap-2 hover:text-white transition-colors">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+       </svg> fotolab.studio@gmail.com </a> <a href="https://instagram.com/fotolabstudio" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-white transition-colors">
+       <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+       </svg> @fotolabstudio </a>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-8 px-6 border-t border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4"><a href="#" class="font-display text-2xl tracking-wider">FOTOLAB STUDIO</a>
+     <p class="text-neutral-600 text-sm italic">Contenido audiovisual con intención</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      hero_title: 'EL <span class="gradient-text">LABORATORIO</span> DONDE TU MARCA COBRA VIDA',
+      hero_subtitle: '',
+      tagline: 'Más que contenido. Experiencias visuales.',
+      packages_title: 'PAQUETES DE CONTENIDO',
+      why_title: '¿POR QUÉ FOTOLAB?',
+      contact_title: 'HABLEMOS',
+      cta_text: 'Hablemos de tu marca',
+      whatsapp_number: '573027365200',
+      background_color: '#0a0a0a',
+      surface_color: '#ffffff0d',
+      text_color: '#ffffff',
+      primary_action_color: '#f89aac',
+      secondary_action_color: '#7bbddf',
+      font_family: 'Inter',
+      font_size: 16
+    };
+
+    let config = { ...defaultConfig };
+
+    async function onConfigChange(cfg) {
+      config = { ...defaultConfig, ...cfg };
+      
+      // Update hero section
+      const heroTitle = document.getElementById('hero-title');
+      if (heroTitle) heroTitle.innerHTML = config.hero_title || defaultConfig.hero_title;
+      
+      const heroSubtitle = document.getElementById('hero-subtitle');
+      if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      
+      const tagline = document.getElementById('tagline');
+      if (tagline) tagline.textContent = config.tagline || defaultConfig.tagline;
+      
+      // Update packages title
+      const packagesTitle = document.getElementById('packages-title');
+      if (packagesTitle) packagesTitle.textContent = config.packages_title || defaultConfig.packages_title;
+      
+      // Update why title
+      const whyTitle = document.getElementById('why-title');
+      if (whyTitle) whyTitle.textContent = config.why_title || defaultConfig.why_title;
+      
+      // Update contact title
+      const contactTitle = document.getElementById('contact-title');
+      if (contactTitle) contactTitle.textContent = config.contact_title || defaultConfig.contact_title;
+      
+      // Update CTA button
+      const ctaButton = document.getElementById('cta-button');
+      if (ctaButton) ctaButton.textContent = config.cta_text || defaultConfig.cta_text;
+      
+      // Apply colors
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const primaryColor = config.primary_action_color || defaultConfig.primary_action_color;
+      const secondaryColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+      
+      document.body.style.backgroundColor = bgColor;
+      document.body.style.color = textColor;
+      
+      // Update gradient buttons
+      const gradientStyle = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+      document.querySelectorAll('.btn-primary').forEach(btn => {
+        btn.style.background = gradientStyle;
+      });
+      
+      // Apply font family
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      document.querySelectorAll('.font-body').forEach(el => {
+        el.style.fontFamily = `${fontFamily}, sans-serif`;
+      });
+      
+      // Apply font size
+      const baseSize = config.font_size || defaultConfig.font_size;
+      document.body.style.fontSize = `${baseSize}px`;
+    }
+
+    function mapToCapabilities(cfg) {
+      return {
+        recolorables: [
+          {
+            get: () => cfg.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => cfg.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => cfg.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => cfg.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => {
+              config.primary_action_color = value;
+              window.elementSdk.setConfig({ primary_action_color: value });
+            }
+          },
+          {
+            get: () => cfg.secondary_action_color || defaultConfig.secondary_action_color,
+            set: (value) => {
+              config.secondary_action_color = value;
+              window.elementSdk.setConfig({ secondary_action_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => cfg.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => cfg.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(cfg) {
+      return new Map([
+        ['hero_title', cfg.hero_title || defaultConfig.hero_title],
+        ['hero_subtitle', cfg.hero_subtitle || defaultConfig.hero_subtitle],
+        ['tagline', cfg.tagline || defaultConfig.tagline],
+        ['packages_title', cfg.packages_title || defaultConfig.packages_title],
+        ['why_title', cfg.why_title || defaultConfig.why_title],
+        ['contact_title', cfg.contact_title || defaultConfig.contact_title],
+        ['cta_text', cfg.cta_text || defaultConfig.cta_text],
+        ['whatsapp_number', cfg.whatsapp_number || defaultConfig.whatsapp_number]
+      ]);
+    }
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Form handling
+    const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Hide form and show success message
+      contactForm.classList.add('hidden');
+      formSuccess.classList.remove('hidden');
+      
+      // Reset form
+      contactForm.reset();
+      
+      // Optional: Reset after some time
+      setTimeout(() => {
+        contactForm.classList.remove('hidden');
+        formSuccess.classList.add('hidden');
+      }, 5000);
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Función para manejar autoplay y loop de videos de Canva
+    function setupVideoLoop() {
+      // Seleccionar todos los iframes de video
+      const videos = document.querySelectorAll('iframe.hero-video, iframe.portfolio-video');
+      
+      videos.forEach(video => {
+        // Intentar con parámetros en la URL ya agregados
+        // Como respaldo, recargar el iframe cada 30 segundos (duración aproximada de los videos)
+        setInterval(() => {
+          const currentSrc = video.src;
+          // Remover el parámetro de tiempo para evitar caché
+          const baseSrc = currentSrc.split('&_t=')[0];
+          video.src = baseSrc + '&_t=' + new Date().getTime();
+        }, 30000); // 30 segundos
+      });
+    }
+
+    // Ejecutar después de que la página cargue
+    document.addEventListener('DOMContentLoaded', setupVideoLoop);
+
+    // Carousel functionality
+    const carouselStates = {};
+
+    function initCarousel(carouselId) {
+      if (!carouselStates[carouselId]) {
+        carouselStates[carouselId] = { currentIndex: 0 };
+      }
+    }
+
+    function nextSlide(carouselId) {
+      initCarousel(carouselId);
+      const carousel = document.getElementById(carouselId);
+      const slides = carousel.querySelectorAll('.carousel-slide');
+      const indicators = carousel.querySelectorAll('.carousel-indicator');
+      
+      slides[carouselStates[carouselId].currentIndex].classList.remove('active');
+      slides[carouselStates[carouselId].currentIndex].style.opacity = '0';
+      indicators[carouselStates[carouselId].currentIndex].classList.remove('active');
+      indicators[carouselStates[carouselId].currentIndex].classList.add('bg-white/40');
+      indicators[carouselStates[carouselId].currentIndex].classList.remove('bg-white');
+      
+      carouselStates[carouselId].currentIndex = (carouselStates[carouselId].currentIndex + 1) % slides.length;
+      
+      slides[carouselStates[carouselId].currentIndex].classList.add('active');
+      slides[carouselStates[carouselId].currentIndex].style.opacity = '1';
+      indicators[carouselStates[carouselId].currentIndex].classList.add('active');
+      indicators[carouselStates[carouselId].currentIndex].classList.remove('bg-white/40');
+      indicators[carouselStates[carouselId].currentIndex].classList.add('bg-white');
+    }
+
+    function prevSlide(carouselId) {
+      initCarousel(carouselId);
+      const carousel = document.getElementById(carouselId);
+      const slides = carousel.querySelectorAll('.carousel-slide');
+      const indicators = carousel.querySelectorAll('.carousel-indicator');
+      
+      slides[carouselStates[carouselId].currentIndex].classList.remove('active');
+      slides[carouselStates[carouselId].currentIndex].style.opacity = '0';
+      indicators[carouselStates[carouselId].currentIndex].classList.remove('active');
+      indicators[carouselStates[carouselId].currentIndex].classList.add('bg-white/40');
+      indicators[carouselStates[carouselId].currentIndex].classList.remove('bg-white');
+      
+      carouselStates[carouselId].currentIndex = (carouselStates[carouselId].currentIndex - 1 + slides.length) % slides.length;
+      
+      slides[carouselStates[carouselId].currentIndex].classList.add('active');
+      slides[carouselStates[carouselId].currentIndex].style.opacity = '1';
+      indicators[carouselStates[carouselId].currentIndex].classList.add('active');
+      indicators[carouselStates[carouselId].currentIndex].classList.remove('bg-white/40');
+      indicators[carouselStates[carouselId].currentIndex].classList.add('bg-white');
+    }
+
+    function goToSlide(carouselId, index) {
+      initCarousel(carouselId);
+      const carousel = document.getElementById(carouselId);
+      const slides = carousel.querySelectorAll('.carousel-slide');
+      const indicators = carousel.querySelectorAll('.carousel-indicator');
+      
+      slides[carouselStates[carouselId].currentIndex].classList.remove('active');
+      slides[carouselStates[carouselId].currentIndex].style.opacity = '0';
+      indicators[carouselStates[carouselId].currentIndex].classList.remove('active');
+      indicators[carouselStates[carouselId].currentIndex].classList.add('bg-white/40');
+      indicators[carouselStates[carouselId].currentIndex].classList.remove('bg-white');
+      
+      carouselStates[carouselId].currentIndex = index;
+      
+      slides[carouselStates[carouselId].currentIndex].classList.add('active');
+      slides[carouselStates[carouselId].currentIndex].style.opacity = '1';
+      indicators[carouselStates[carouselId].currentIndex].classList.add('active');
+      indicators[carouselStates[carouselId].currentIndex].classList.remove('bg-white/40');
+      indicators[carouselStates[carouselId].currentIndex].classList.add('bg-white');
+    }
+
+    // Initialize all carousels
+    
+    
+    
+
+    // Toggle more projects functionality
+    const toggleButton = document.getElementById('toggle-more-projects');
+    const extraItems = document.getElementById('extra-portfolio-items');
+    const toggleText = document.getElementById('toggle-text');
+    const toggleIcon = document.getElementById('toggle-icon');
+    let isExpanded = false;
+
+    toggleButton.addEventListener('click', function() {
+      isExpanded = !isExpanded;
+      
+      if (isExpanded) {
+        extraItems.classList.remove('hidden');
+        toggleText.textContent = 'Ver menos proyectos';
+        toggleIcon.style.transform = 'rotate(180deg)';
+        
+        // Smooth scroll to show new items
+        setTimeout(() => {
+          extraItems.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+      } else {
+        extraItems.classList.add('hidden');
+        toggleText.textContent = 'Ver más proyectos';
+        toggleIcon.style.transform = 'rotate(0deg)';
+      }
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c12c159d38bf78a',t:'MTc2ODk1NTk3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+    
+  </body>
+  
+</html>ef="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <style>
