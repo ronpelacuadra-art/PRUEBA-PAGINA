@@ -4,6 +4,8 @@
   <head>
     <meta charset="UTF-8">
     <title>Untitled</title>
+    <!-- Meta tag para política de referer - Ayuda con el error 153 -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     
 
   </head>
@@ -144,16 +146,17 @@
     </div>
    </nav>
    
-   <!-- Hero Section - CORREGIDA con video de YouTube (sin error 153) -->
+   <!-- Hero Section - SIN MUTE (el autoplay puede no funcionar en navegadores modernos) -->
    <section id="inicio" class="relative min-h-screen flex flex-col">
      <!-- Contenedor del video - FULL-SCREEN -->
      <div class="relative w-full h-screen overflow-hidden">
-       <!-- Video de fondo full-screen - YouTube con parámetros correctos -->
+       <!-- Video de fondo full-screen - YouTube SIN MUTE -->
        <div class="absolute inset-0 w-full h-full z-0">
          <iframe 
            class="w-full h-full"
            style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; pointer-events: auto;"
-           src="https://www.youtube.com/embed/46D7z6_UtBY?autoplay=1&mute=1&loop=1&playlist=46D7z6_UtBY&controls=0&modestbranding=1&rel=0&playsinline=1&enablejsapi=1&iv_load_policy=3" 
+           src="https://www.youtube.com/embed/46D7z6_UtBY?autoplay=1&loop=1&playlist=46D7z6_UtBY&controls=0&modestbranding=1&rel=0&playsinline=1" 
+           referrerpolicy="strict-origin-when-cross-origin"
            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
            allowfullscreen
            title="Video de prueba">
