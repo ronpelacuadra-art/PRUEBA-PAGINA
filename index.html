@@ -3,10 +3,10 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>Untitled</title>
+    <title>Fotolab - Agencia Creativa</title>
     <!-- Meta tag para política de referer - Ayuda con el error 153 -->
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 
   </head>
     
@@ -15,7 +15,7 @@
 <html lang="es" class="h-full">
  <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Fotolab - Agencia Creativa</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="/_sdk/element_sdk.js"></script>
@@ -208,6 +208,122 @@
         min-width: calc(100% - 0px) !important;
       }
     }
+
+    /* ===== MEJORAS PARA MÓVIL ===== */
+    
+    /* Sliders con mejor desplazamiento táctil */
+    #vertical-slider, #horizontal-slider {
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+    }
+    
+    #vertical-slider::-webkit-scrollbar, #horizontal-slider::-webkit-scrollbar {
+      display: none; /* Chrome/Safari/Opera */
+    }
+    
+    @media (max-width: 768px) {
+      /* Slider vertical: items más grandes */
+      #vertical-slider {
+        gap: 0.5rem;
+        scroll-snap-type: x mandatory;
+      }
+      
+      #vertical-slider > div {
+        min-width: calc(70% - 0.5rem) !important;
+        scroll-snap-align: start;
+      }
+      
+      /* Slider horizontal: items casi al ancho completo */
+      #horizontal-slider {
+        gap: 0.75rem;
+        scroll-snap-type: x mandatory;
+      }
+      
+      #horizontal-slider > div {
+        min-width: calc(85% - 0.75rem) !important;
+        scroll-snap-align: start;
+      }
+      
+      /* Ajustes generales de espaciado y fuentes */
+      .px-6 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+      
+      h1.font-display {
+        font-size: 2.5rem !important;
+        line-height: 1.2 !important;
+      }
+      
+      h2.font-display.text-5xl {
+        font-size: 2.5rem !important;
+      }
+      
+      h2.font-display.text-7xl {
+        font-size: 3rem !important;
+      }
+      
+      /* Grids a una columna en móvil */
+      .grid.md\:grid-cols-2.lg\:grid-cols-4,
+      .grid.md\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+      }
+      
+      /* Marcas en grid de 2 columnas */
+      .grid-cols-2.md\:grid-cols-4.lg\:grid-cols-6 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem;
+      }
+      
+      /* Reducir padding vertical de secciones */
+      .py-24 {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+      }
+      
+      /* Botones más compactos */
+      .whatsapp-pulse, .px-10.py-4 {
+        padding: 0.75rem 1.5rem !important;
+        font-size: 1rem !important;
+        width: 100%;
+        text-align: center;
+      }
+      
+      .flex-col.sm\:flex-row {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      /* Navegación más compacta */
+      nav .font-display {
+        font-size: 1.5rem !important;
+      }
+      
+      /* Tarjetas de paquetes mejor espaciado */
+      .rounded-3xl {
+        padding: 1.5rem !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      /* Columnas de Instagram apiladas */
+      .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+        grid-template-columns: 1fr !important;
+      }
+      
+      .instagram-column {
+        height: auto !important;
+        max-height: 450px;
+        margin-bottom: 1rem;
+      }
+      
+      /* Títulos aún más pequeños si es necesario */
+      h2.font-display.text-7xl {
+        font-size: 2.5rem !important;
+      }
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -215,74 +331,85 @@
  <body class="h-full font-body bg-neutral-950 text-white scroll-smooth overflow-auto">
   <div class="w-full min-h-full"><!-- Navigation -->
    <nav class="fixed top-0 left-0 right-0 z-50 bg-neutral-950/80 backdrop-blur-xl border-b border-white/5">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"><a href="#" class="font-display text-3xl tracking-wider">FOTOLAB STUDIO</a>
-     <div class="hidden md:flex items-center gap-8"><a href="#inicio" class="nav-link text-sm font-medium text-neutral-300 hover:text-white transition-colors">Inicio</a> <a href="#servicios" class="nav-link text-sm font-medium text-neutral-300 hover:text-white transition-colors">Servicios</a> <a href="#paquetes" class="nav-link text-sm font-medium text-neutral-300 hover:text-white transition-colors">Paquetes</a> <a href="#portafolio" class="nav-link text-sm font-medium text-neutral-300 hover:text-white transition-colors">Portafolio</a> <a href="#contacto" class="nav-link text-sm font-medium text-neutral-300 hover:text-white transition-colors">Contacto</a>
-     </div><a href="#contacto" class="btn-primary px-6 py-2.5 rounded-full text-sm font-semibold text-neutral-900"> Hablemos </a>
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
+      <a href="#" class="font-display text-2xl md:text-3xl tracking-wider">FOTOLAB STUDIO</a>
+      
+      <!-- Menú para móvil (hamburguesa) - simplificado sin funcionalidad compleja -->
+      <div class="flex items-center gap-2">
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#inicio" class="nav-link text-sm font-medium text-neutral-300 hover:text-white transition-colors">Inicio</a>
+          <a href="#servicios" class="nav-link text-sm font-medium text-neutral-300 hover:text-white transition-colors">Servicios</a>
+          <a href="#paquetes" class="nav-link text-sm font-medium text-neutral-300 hover:text-white transition-colors">Paquetes</a>
+          <a href="#portafolio" class="nav-link text-sm font-medium text-neutral-300 hover:text-white transition-colors">Portafolio</a>
+          <a href="#contacto" class="nav-link text-sm font-medium text-neutral-300 hover:text-white transition-colors">Contacto</a>
+        </div>
+        <a href="#contacto" class="btn-primary px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-semibold text-neutral-900 whitespace-nowrap"> Hablemos </a>
+      </div>
     </div>
    </nav>
    
-   <!-- Hero Section - SIN MUTE (el autoplay puede no funcionar en navegadores modernos) -->
+   <!-- Hero Section - VERSIÓN MEJORADA PARA MÓVIL -->
    <section id="inicio" class="relative min-h-screen flex flex-col">
-     <!-- Contenedor del video - FULL-SCREEN -->
-     <div class="relative w-full h-screen overflow-hidden">
-       <!-- Video de fondo full-screen - YouTube SIN MUTE -->
-       <div class="absolute inset-0 w-full h-full z-0">
+     <!-- Contenedor del video - CON ALTURA FIJA EN MÓVIL -->
+     <div class="relative w-full h-[70vh] md:h-screen overflow-hidden bg-black">
+       <!-- Video de fondo full-screen - YouTube CON MUTED PARA AUTOPLAY -->
+       <div class="absolute inset-0 w-full h-full">
          <iframe 
-           class="w-full h-full"
-           style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; pointer-events: auto;"
-           src="https://www.youtube.com/embed/46D7z6_UtBY?autoplay=1&loop=1&playlist=46D7z6_UtBY&controls=0&modestbranding=1&rel=0&playsinline=1" 
+           class="absolute w-full h-full"
+           style="width: 100%; height: 100%; border: none; object-fit: cover;"
+           src="https://www.youtube.com/embed/46D7z6_UtBY?autoplay=1&muted=1&loop=1&playlist=46D7z6_UtBY&controls=0&modestbranding=1&rel=0&playsinline=1" 
            referrerpolicy="strict-origin-when-cross-origin"
            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
            allowfullscreen
            title="Video de prueba">
          </iframe>
-         <!-- Overlay oscuro para legibilidad (NO bloquea clicks) -->
-         <div class="absolute inset-0 bg-black/40 z-0 pointer-events-none"></div>
+         <!-- Overlay oscuro MÁS FUERTE EN MÓVIL para legibilidad -->
+         <div class="absolute inset-0 bg-black/50 md:bg-black/40"></div>
        </div>
        
-       <!-- Contenedor de textos superpuestos -->
-       <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 w-full max-w-5xl px-6 text-center pointer-events-none">
-         <!-- Título principal -->
-         <h1 id="hero-title" class="font-display text-4xl md:text-6xl lg:text-7xl leading-none tracking-tight mb-4">
-           EL <span class="gradient-text">LABORATORIO</span> DONDE TU MARCA COBRA VIDA
-         </h1>
-         <!-- Párrafo justo debajo del título -->
-         <p id="hero-subtitle" class="text-neutral-200 text-lg md:text-xl max-w-3xl mx-auto">
-           En Fotolab creamos fotografía y video con intención: piezas pensadas para llamar la atención, generar conexión y convertir vistas en clientes.
-         </p>
+       <!-- Contenedor de textos - MEJOR CENTRADO -->
+       <div class="absolute inset-0 flex items-center justify-center px-4 text-center z-10">
+         <div class="w-full max-w-5xl">
+           <h1 id="hero-title" class="font-display text-4xl md:text-6xl lg:text-7xl leading-tight md:leading-none tracking-tight mb-4">
+             EL <span class="gradient-text">LABORATORIO</span> DONDE TU MARCA COBRA VIDA
+           </h1>
+           <p id="hero-subtitle" class="text-neutral-200 text-base md:text-lg lg:text-xl max-w-3xl mx-auto">
+             En Fotolab creamos fotografía y video con intención: piezas pensadas para llamar la atención, generar conexión y convertir vistas en clientes.
+           </p>
+         </div>
        </div>
        
-       <!-- Scroll Indicator (mantenido) -->
-       <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
-         <div class="w-6 h-10 border-2 border-white/40 rounded-full flex items-start justify-center p-2 pointer-events-none">
-           <div class="w-1 h-2 bg-white/80 rounded-full animate-bounce pointer-events-none"></div>
+       <!-- Scroll Indicator (mejor posicionado) -->
+       <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
+         <div class="w-6 h-10 border-2 border-white/40 rounded-full flex items-start justify-center p-2">
+           <div class="w-1 h-2 bg-white/80 rounded-full animate-bounce"></div>
          </div>
        </div>
      </div>
      
-     <!-- Botones DEBAJO del video -->
-     <div class="relative z-10 bg-neutral-950 py-16 px-6">
+     <!-- Botones DEBAJO del video - MEJORADOS PARA MÓVIL -->
+     <div class="relative z-10 bg-neutral-950 py-12 md:py-16 px-4">
        <div class="max-w-4xl mx-auto text-center">
-         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-           <a href="https://wa.me/573027365200" target="_blank" rel="noopener noreferrer" class="whatsapp-pulse bg-green-500 hover:bg-green-600 inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full font-semibold text-white shadow-2xl hover:scale-105 transition-all text-lg">
-             <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+         <div class="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
+           <a href="https://wa.me/573027365200" target="_blank" rel="noopener noreferrer" class="whatsapp-pulse bg-green-500 hover:bg-green-600 inline-flex items-center justify-center gap-3 px-6 md:px-10 py-3 md:py-4 rounded-full font-semibold text-white shadow-2xl hover:scale-105 transition-all text-base md:text-lg w-full sm:w-auto">
+             <svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewbox="0 0 24 24">
                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
              </svg> Hablemos de tu marca 
            </a> 
-           <a href="#servicios" class="px-10 py-4 rounded-full font-semibold border border-white/30 hover:bg-white/10 transition-colors text-white"> Lo que hacemos </a>
+           <a href="#servicios" class="px-6 md:px-10 py-3 md:py-4 rounded-full font-semibold border border-white/30 hover:bg-white/10 transition-colors text-white text-base md:text-lg w-full sm:w-auto"> Lo que hacemos </a>
          </div>
        </div>
      </div>
    </section>
 
-   <!-- Services Section -->
-   <section id="servicios" class="py-24 md:py-32 px-6">
+   <!-- Services Section (sin cambios estructurales, los estilos CSS ya lo ajustan) -->
+   <section id="servicios" class="py-16 md:py-24 lg:py-32 px-4 md:px-6">
     <div class="max-w-7xl mx-auto">
-     <div class="text-center mb-16">
-      <h2 class="font-display text-5xl md:text-7xl tracking-tight mb-6">LO QUE HACEMOS</h2>
-      <p class="text-neutral-400 text-lg md:text-xl max-w-3xl mx-auto">Ayudamos a marcas, emprendedores y creadores a verse profesionales, relevantes y memorables en redes sociales y plataformas digitales.</p>
+     <div class="text-center mb-12 md:mb-16">
+      <h2 class="font-display text-4xl md:text-5xl lg:text-7xl tracking-tight mb-4 md:mb-6">LO QUE HACEMOS</h2>
+      <p class="text-neutral-400 text-base md:text-lg lg:text-xl max-w-3xl mx-auto">Ayudamos a marcas, emprendedores y creadores a verse profesionales, relevantes y memorables en redes sociales y plataformas digitales.</p>
      </div>
-     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
       <div class="text-center">
        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-pink-500/20 to-blue-500/20 flex items-center justify-center">
         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
@@ -323,30 +450,30 @@
     </div>
    </section>
    
-   <!-- Packages Section - NUEVOS PAQUETES DE CONTENIDO (Laboratorio de Experiencias Creativas) -->
-   <section id="paquetes" class="py-24 md:py-32 px-6">
+   <!-- Packages Section - NUEVOS PAQUETES -->
+   <section id="paquetes" class="py-16 md:py-24 lg:py-32 px-4 md:px-6">
     <div class="max-w-7xl mx-auto">
      <!-- línea superior -->
-     <div class="w-full h-[2px] bg-purple-600 mb-16"></div>
+     <div class="w-full h-[2px] bg-purple-600 mb-12 md:mb-16"></div>
      <!-- titulo -->
-     <div class="text-center max-w-3xl mx-auto mb-20">
-      <h2 id="packages-title" class="text-5xl md:text-6xl font-bold text-white mb-6">Laboratorio de Experiencias Creativas</h2>
-      <p class="text-gray-400 text-lg">Producción audiovisual, fotografía y contenido profesional para marcas, creadores y artistas que quieren destacar.</p>
+     <div class="text-center max-w-3xl mx-auto mb-12 md:mb-20">
+      <h2 id="packages-title" class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6">Laboratorio de Experiencias Creativas</h2>
+      <p class="text-gray-400 text-base md:text-lg">Producción audiovisual, fotografía y contenido profesional para marcas, creadores y artistas que quieren destacar.</p>
      </div>
-     <!-- grid paquetes -->
-     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+     <!-- grid paquetes - RESPONSIVE -->
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
       <!-- Package 1: Reels Experience -->
-      <div class="card-hover bg-white/[0.03] border border-white/10 rounded-3xl p-8 relative overflow-hidden group">
+      <div class="card-hover bg-white/[0.03] border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden group">
        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-500/10 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
        <div class="relative z-10">
         <div class="w-12 h-12 mb-4 rounded-xl bg-gradient-to-br from-pink-500/20 to-blue-500/20 flex items-center justify-center"><span class="text-2xl">📱</span>
         </div>
-        <h3 class="font-display text-2xl mb-2">Reels Experience</h3>
-        <p class="text-neutral-500 mb-4 text-sm">Contenido visual para redes sociales</p>
-        <div class="space-y-4 mb-8 text-sm">
+        <h3 class="font-display text-xl md:text-2xl mb-2">Reels Experience</h3>
+        <p class="text-neutral-500 mb-4 text-xs md:text-sm">Contenido visual para redes sociales</p>
+        <div class="space-y-4 mb-6 md:mb-8 text-xs md:text-sm">
          <div>
-          <p class="text-neutral-400 font-semibold mb-3">Incluye:</p>
-          <ul class="space-y-2">
+          <p class="text-neutral-400 font-semibold mb-2 md:mb-3">Incluye:</p>
+          <ul class="space-y-1 md:space-y-2">
            <li class="flex items-start gap-2 text-neutral-300">
             <svg class="w-4 h-4 text-pink-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -366,24 +493,24 @@
           </ul>
          </div>
          <div>
-          <p class="text-neutral-400 font-semibold mb-2">Ideal para:</p>
+          <p class="text-neutral-400 font-semibold mb-1 md:mb-2">Ideal para:</p>
           <p class="text-neutral-300 text-xs">Marcas de moda, restaurantes, productos, emprendimientos</p>
          </div>
-        </div><a href="https://wa.me/573027365200?text=Hola,%20me%20interesa%20Fotolab%20Reels%20Experience" target="_blank" rel="noopener noreferrer" class="block w-full py-3 text-center border border-white/20 rounded-full font-semibold hover:bg-white/5 transition-colors text-sm">Solicitar información</a>
+        </div><a href="https://wa.me/573027365200?text=Hola,%20me%20interesa%20Fotolab%20Reels%20Experience" target="_blank" rel="noopener noreferrer" class="block w-full py-2.5 md:py-3 text-center border border-white/20 rounded-full font-semibold hover:bg-white/5 transition-colors text-xs md:text-sm">Solicitar información</a>
        </div>
       </div>
       <!-- Package 2: Podcast Studio -->
-      <div class="card-hover bg-white/[0.03] border border-white/10 rounded-3xl p-8 relative overflow-hidden group">
+      <div class="card-hover bg-white/[0.03] border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden group">
        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
        <div class="relative z-10">
         <div class="w-12 h-12 mb-4 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center"><span class="text-2xl">🎙️</span>
         </div>
-        <h3 class="font-display text-2xl mb-2">Podcast Studio</h3>
-        <p class="text-neutral-500 mb-4 text-sm">Grabación profesional de podcasts</p>
-        <div class="space-y-4 mb-8 text-sm">
+        <h3 class="font-display text-xl md:text-2xl mb-2">Podcast Studio</h3>
+        <p class="text-neutral-500 mb-4 text-xs md:text-sm">Grabación profesional de podcasts</p>
+        <div class="space-y-4 mb-6 md:mb-8 text-xs md:text-sm">
          <div>
-          <p class="text-neutral-400 font-semibold mb-3">Incluye:</p>
-          <ul class="space-y-2">
+          <p class="text-neutral-400 font-semibold mb-2 md:mb-3">Incluye:</p>
+          <ul class="space-y-1 md:space-y-2">
            <li class="flex items-start gap-2 text-neutral-300">
             <svg class="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -403,25 +530,25 @@
           </ul>
          </div>
          <div>
-          <p class="text-neutral-400 font-semibold mb-2">Duración: Hasta 1 hora</p>
-          <p class="text-neutral-400 font-semibold mb-2">Ideal para:</p>
+          <p class="text-neutral-400 font-semibold mb-1 md:mb-2">Duración: Hasta 1 hora</p>
+          <p class="text-neutral-400 font-semibold mb-1 md:mb-2">Ideal para:</p>
           <p class="text-neutral-300 text-xs">Creadores de contenido, educadores, empresarios, entrevistas</p>
          </div>
-        </div><a href="https://wa.me/573027365200?text=Hola,%20me%20interesa%20Fotolab%20Podcast%20Studio" target="_blank" rel="noopener noreferrer" class="block w-full py-3 text-center border border-white/20 rounded-full font-semibold hover:bg-white/5 transition-colors text-sm">Solicitar información</a>
+        </div><a href="https://wa.me/573027365200?text=Hola,%20me%20interesa%20Fotolab%20Podcast%20Studio" target="_blank" rel="noopener noreferrer" class="block w-full py-2.5 md:py-3 text-center border border-white/20 rounded-full font-semibold hover:bg-white/5 transition-colors text-xs md:text-sm">Solicitar información</a>
        </div>
       </div>
       <!-- Package 3: Live Sessions -->
-      <div class="card-hover bg-white/[0.03] border border-white/10 rounded-3xl p-8 relative overflow-hidden group">
+      <div class="card-hover bg-white/[0.03] border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden group">
        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
        <div class="relative z-10">
         <div class="w-12 h-12 mb-4 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center"><span class="text-2xl">🎵</span>
         </div>
-        <h3 class="font-display text-2xl mb-2">Live Sessions</h3>
-        <p class="text-neutral-500 mb-4 text-sm">Experiencia audiovisual musical</p>
-        <div class="space-y-4 mb-8 text-sm">
+        <h3 class="font-display text-xl md:text-2xl mb-2">Live Sessions</h3>
+        <p class="text-neutral-500 mb-4 text-xs md:text-sm">Experiencia audiovisual musical</p>
+        <div class="space-y-4 mb-6 md:mb-8 text-xs md:text-sm">
          <div>
-          <p class="text-neutral-400 font-semibold mb-3">Incluye:</p>
-          <ul class="space-y-2">
+          <p class="text-neutral-400 font-semibold mb-2 md:mb-3">Incluye:</p>
+          <ul class="space-y-1 md:space-y-2">
            <li class="flex items-start gap-2 text-neutral-300">
             <svg class="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -441,24 +568,24 @@
           </ul>
          </div>
          <div>
-          <p class="text-neutral-400 font-semibold mb-2">Ideal para:</p>
+          <p class="text-neutral-400 font-semibold mb-1 md:mb-2">Ideal para:</p>
           <p class="text-neutral-300 text-xs">Músicos, bandas, cantantes, DJs, proyectos musicales</p>
          </div>
-        </div><a href="https://wa.me/573027365200?text=Hola,%20me%20interesa%20Fotolab%20Live%20Sessions" target="_blank" rel="noopener noreferrer" class="block w-full py-3 text-center border border-white/20 rounded-full font-semibold hover:bg-white/5 transition-colors text-sm">Solicitar información</a>
+        </div><a href="https://wa.me/573027365200?text=Hola,%20me%20interesa%20Fotolab%20Live%20Sessions" target="_blank" rel="noopener noreferrer" class="block w-full py-2.5 md:py-3 text-center border border-white/20 rounded-full font-semibold hover:bg-white/5 transition-colors text-xs md:text-sm">Solicitar información</a>
        </div>
       </div>
       <!-- Package 4: Creator Pack -->
-      <div class="card-hover bg-white/[0.03] border border-white/10 rounded-3xl p-8 relative overflow-hidden group">
+      <div class="card-hover bg-white/[0.03] border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden group">
        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-500/10 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
        <div class="relative z-10">
         <div class="w-12 h-12 mb-4 rounded-xl bg-gradient-to-br from-orange-500/20 to-yellow-500/20 flex items-center justify-center"><span class="text-2xl">🚀</span>
         </div>
-        <h3 class="font-display text-2xl mb-2">Creator Pack</h3>
-        <p class="text-neutral-500 mb-4 text-sm">Contenido estratégico mensual</p>
-        <div class="space-y-4 mb-8 text-sm">
+        <h3 class="font-display text-xl md:text-2xl mb-2">Creator Pack</h3>
+        <p class="text-neutral-500 mb-4 text-xs md:text-sm">Contenido estratégico mensual</p>
+        <div class="space-y-4 mb-6 md:mb-8 text-xs md:text-sm">
          <div>
-          <p class="text-neutral-400 font-semibold mb-3">Incluye:</p>
-          <ul class="space-y-2">
+          <p class="text-neutral-400 font-semibold mb-2 md:mb-3">Incluye:</p>
+          <ul class="space-y-1 md:space-y-2">
            <li class="flex items-start gap-2 text-neutral-300">
             <svg class="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -478,24 +605,24 @@
           </ul>
          </div>
          <div>
-          <p class="text-neutral-400 font-semibold mb-2">Resultado:</p>
+          <p class="text-neutral-400 font-semibold mb-1 md:mb-2">Resultado:</p>
           <p class="text-neutral-300 text-xs">Contenido suficiente para 1 mes en redes sociales</p>
          </div>
-        </div><a href="https://wa.me/573027365200?text=Hola,%20me%20interesa%20Fotolab%20Creator%20Pack" target="_blank" rel="noopener noreferrer" class="block w-full py-3 text-center border border-white/20 rounded-full font-semibold hover:bg-white/5 transition-colors text-sm">Solicitar información</a>
+        </div><a href="https://wa.me/573027365200?text=Hola,%20me%20interesa%20Fotolab%20Creator%20Pack" target="_blank" rel="noopener noreferrer" class="block w-full py-2.5 md:py-3 text-center border border-white/20 rounded-full font-semibold hover:bg-white/5 transition-colors text-xs md:text-sm">Solicitar información</a>
        </div>
       </div>
       <!-- Package 5: Event Experience -->
-      <div class="card-hover bg-white/[0.03] border border-white/10 rounded-3xl p-8 relative overflow-hidden group">
+      <div class="card-hover bg-white/[0.03] border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden group">
        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-500/10 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
        <div class="relative z-10">
         <div class="w-12 h-12 mb-4 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center"><span class="text-2xl">🎬</span>
         </div>
-        <h3 class="font-display text-2xl mb-2">Event Experience</h3>
-        <p class="text-neutral-500 mb-4 text-sm">Cobertura audiovisual de eventos</p>
-        <div class="space-y-4 mb-8 text-sm">
+        <h3 class="font-display text-xl md:text-2xl mb-2">Event Experience</h3>
+        <p class="text-neutral-500 mb-4 text-xs md:text-sm">Cobertura audiovisual de eventos</p>
+        <div class="space-y-4 mb-6 md:mb-8 text-xs md:text-sm">
          <div>
-          <p class="text-neutral-400 font-semibold mb-3">Incluye:</p>
-          <ul class="space-y-2">
+          <p class="text-neutral-400 font-semibold mb-2 md:mb-3">Incluye:</p>
+          <ul class="space-y-1 md:space-y-2">
            <li class="flex items-start gap-2 text-neutral-300">
             <svg class="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -515,27 +642,27 @@
           </ul>
          </div>
          <div>
-          <p class="text-neutral-400 font-semibold mb-2">Ideal para:</p>
+          <p class="text-neutral-400 font-semibold mb-1 md:mb-2">Ideal para:</p>
           <p class="text-neutral-300 text-xs">Eventos culturales, lanzamientos, charlas, networking</p>
          </div>
-        </div><a href="https://wa.me/573027365200?text=Hola,%20me%20interesa%20Fotolab%20Event%20Experience" target="_blank" rel="noopener noreferrer" class="block w-full py-3 text-center border border-white/20 rounded-full font-semibold hover:bg-white/5 transition-colors text-sm">Solicitar información</a>
+        </div><a href="https://wa.me/573027365200?text=Hola,%20me%20interesa%20Fotolab%20Event%20Experience" target="_blank" rel="noopener noreferrer" class="block w-full py-2.5 md:py-3 text-center border border-white/20 rounded-full font-semibold hover:bg-white/5 transition-colors text-xs md:text-sm">Solicitar información</a>
        </div>
       </div>
       <!-- Package 6: Premium Brand Production -->
-      <div class="card-hover bg-gradient-to-b from-white/[0.08] to-white/[0.03] border border-white/20 rounded-3xl p-8 relative overflow-hidden group">
-       <div class="absolute -top-1 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-pink-500 to-blue-500 rounded-b-lg text-xs font-bold text-white tracking-wider uppercase">
+      <div class="card-hover bg-gradient-to-b from-white/[0.08] to-white/[0.03] border border-white/20 rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden group">
+       <div class="absolute -top-1 left-1/2 -translate-x-1/2 px-3 md:px-4 py-0.5 md:py-1 bg-gradient-to-r from-pink-500 to-blue-500 rounded-b-lg text-2xs md:text-xs font-bold text-white tracking-wider uppercase">
         Premium
        </div>
        <div class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-pink-500/20 to-transparent rounded-full blur-3xl"></div>
-       <div class="relative z-10 pt-4">
+       <div class="relative z-10 pt-2 md:pt-4">
         <div class="w-12 h-12 mb-4 rounded-xl bg-gradient-to-br from-pink-500/30 to-blue-500/30 flex items-center justify-center"><span class="text-2xl">🌟</span>
         </div>
-        <h3 class="font-display text-2xl mb-2">Premium Brand Production</h3>
-        <p class="text-neutral-400 mb-4 text-sm">Producción audiovisual completa</p>
-        <div class="space-y-4 mb-8 text-sm">
+        <h3 class="font-display text-xl md:text-2xl mb-2">Premium Brand Production</h3>
+        <p class="text-neutral-400 mb-4 text-xs md:text-sm">Producción audiovisual completa</p>
+        <div class="space-y-4 mb-6 md:mb-8 text-xs md:text-sm">
          <div>
-          <p class="text-neutral-300 font-semibold mb-3">Incluye:</p>
-          <ul class="space-y-2">
+          <p class="text-neutral-300 font-semibold mb-2 md:mb-3">Incluye:</p>
+          <ul class="space-y-1 md:space-y-2">
            <li class="flex items-start gap-2 text-neutral-200">
             <svg class="w-4 h-4 text-pink-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -559,10 +686,10 @@
           </ul>
          </div>
          <div>
-          <p class="text-neutral-300 font-semibold mb-2">Ideal para:</p>
+          <p class="text-neutral-300 font-semibold mb-1 md:mb-2">Ideal para:</p>
           <p class="text-neutral-200 text-xs">Campañas de marca, lanzamientos, empresas consolidadas</p>
          </div>
-        </div><a href="https://wa.me/573027365200?text=Hola,%20me%20interesa%20Fotolab%20Premium%20Brand%20Production" class="btn-primary block w-full py-3 text-center rounded-full font-semibold text-white text-sm">Solicitar ahora</a>
+        </div><a href="https://wa.me/573027365200?text=Hola,%20me%20interesa%20Fotolab%20Premium%20Brand%20Production" class="btn-primary block w-full py-2.5 md:py-3 text-center rounded-full font-semibold text-white text-xs md:text-sm">Solicitar ahora</a>
        </div>
       </div>
      </div>
@@ -570,74 +697,74 @@
    </section>
    
    <!-- Brands Section -->
-   <section class="py-24 md:py-32 px-6 bg-white/[0.02]">
+   <section class="py-16 md:py-24 lg:py-32 px-4 md:px-6 bg-white/[0.02]">
     <div class="max-w-7xl mx-auto">
-     <div class="text-center mb-16">
-      <p class="text-neutral-500 font-medium tracking-widest uppercase mb-4 text-sm">Confianza que respalda</p>
-      <h2 class="font-display text-5xl md:text-7xl tracking-tight mb-6">MARCAS CON LAS QUE HEMOS TRABAJADO</h2>
+     <div class="text-center mb-12 md:mb-16">
+      <p class="text-neutral-500 font-medium tracking-widest uppercase mb-3 md:mb-4 text-2xs md:text-sm">Confianza que respalda</p>
+      <h2 class="font-display text-4xl md:text-5xl lg:text-7xl tracking-tight mb-4 md:mb-6">MARCAS CON LAS QUE HEMOS TRABAJADO</h2>
      </div>
-     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-2xl tracking-tight">FOREVER <span class="gradient-text">21</span></p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-2xl tracking-tight">TECNO</p><p class="text-xs text-neutral-500 mt-1">MOBILE</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-2xl tracking-tight">XIAOMI</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-2xl tracking-tight">JAC</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-2xl tracking-tight">JETOUR</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-2xl tracking-tight">KIA</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-2xl tracking-tight">BAJAJ</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-xl tracking-tight">CHEVYPLAN</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-xl tracking-tight">FUJIFILM</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-2xl tracking-tight">CANAL <span class="gradient-text">TRO</span></p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-xl tracking-tight">MITSUBISHI</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-2xl tracking-tight">PRESTO</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-xl tracking-tight">NUTRIBELA</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-xl tracking-tight">SKYDROPX</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-2xl tracking-tight">FLUENCY</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-2xl tracking-tight">AMPER</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-2xl tracking-tight gradient-text">YUPI</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-xl tracking-tight">RIKOMATE</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-xl tracking-tight">DISFARMA</p></div></div>
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-xl tracking-tight">CARBO BRIK</p></div></div>
+     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 max-w-6xl mx-auto">
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-lg md:text-2xl tracking-tight">FOREVER <span class="gradient-text">21</span></p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-lg md:text-2xl tracking-tight">TECNO</p><p class="text-2xs md:text-xs text-neutral-500 mt-0.5 md:mt-1">MOBILE</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-lg md:text-2xl tracking-tight">XIAOMI</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-lg md:text-2xl tracking-tight">JAC</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-lg md:text-2xl tracking-tight">JETOUR</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-lg md:text-2xl tracking-tight">KIA</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-lg md:text-2xl tracking-tight">BAJAJ</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-base md:text-xl tracking-tight">CHEVYPLAN</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-base md:text-xl tracking-tight">FUJIFILM</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-lg md:text-2xl tracking-tight">CANAL <span class="gradient-text">TRO</span></p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-base md:text-xl tracking-tight">MITSUBISHI</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-lg md:text-2xl tracking-tight">PRESTO</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-base md:text-xl tracking-tight">NUTRIBELA</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-base md:text-xl tracking-tight">SKYDROPX</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-lg md:text-2xl tracking-tight">FLUENCY</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-lg md:text-2xl tracking-tight">AMPER</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-lg md:text-2xl tracking-tight gradient-text">YUPI</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-base md:text-xl tracking-tight">RIKOMATE</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-base md:text-xl tracking-tight">DISFARMA</p></div></div>
+      <div class="bg-white/[0.03] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6 flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"><div class="text-center"><p class="font-display text-base md:text-xl tracking-tight">CARBO BRIK</p></div></div>
      </div>
     </div>
    </section>
    
    <!-- Why Fotolab Section -->
-   <section class="py-24 md:py-32 px-6">
+   <section class="py-16 md:py-24 lg:py-32 px-4 md:px-6">
     <div class="max-w-7xl mx-auto">
-     <div class="text-center mb-16">
-      <h2 id="why-title" class="font-display text-5xl md:text-7xl tracking-tight mb-6">¿POR QUÉ FOTOLAB?</h2>
-      <p class="text-neutral-400 text-lg md:text-xl max-w-3xl mx-auto">Porque no solo grabamos y tomamos fotos. Pensamos, creamos y ejecutamos contenido con estrategia.</p>
+     <div class="text-center mb-12 md:mb-16">
+      <h2 id="why-title" class="font-display text-4xl md:text-5xl lg:text-7xl tracking-tight mb-4 md:mb-6">¿POR QUÉ FOTOLAB?</h2>
+      <p class="text-neutral-400 text-base md:text-lg lg:text-xl max-w-3xl mx-auto">Porque no solo grabamos y tomamos fotos. Pensamos, creamos y ejecutamos contenido con estrategia.</p>
      </div>
-     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-      <div class="text-center"><div class="text-5xl mb-4">🎬</div><h3 class="font-semibold text-xl mb-2">+13 Años</h3><p class="text-neutral-500 text-sm">Creando contenido audiovisual</p></div>
-      <div class="text-center"><div class="text-5xl mb-4">📱</div><h3 class="font-semibold text-xl mb-2">Enfoque Real</h3><p class="text-neutral-500 text-sm">En redes sociales y resultados</p></div>
-      <div class="text-center"><div class="text-5xl mb-4">✨</div><h3 class="font-semibold text-xl mb-2">Estética Cuidada</h3><p class="text-neutral-500 text-sm">Y storytelling visual</p></div>
-      <div class="text-center"><div class="text-5xl mb-4">🔥</div><h3 class="font-semibold text-xl mb-2">Procesos Claros</h3><p class="text-neutral-500 text-sm">Y entregas rápidas</p></div>
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
+      <div class="text-center"><div class="text-4xl md:text-5xl mb-3 md:mb-4">🎬</div><h3 class="font-semibold text-lg md:text-xl mb-1 md:mb-2">+13 Años</h3><p class="text-neutral-500 text-xs md:text-sm">Creando contenido audiovisual</p></div>
+      <div class="text-center"><div class="text-4xl md:text-5xl mb-3 md:mb-4">📱</div><h3 class="font-semibold text-lg md:text-xl mb-1 md:mb-2">Enfoque Real</h3><p class="text-neutral-500 text-xs md:text-sm">En redes sociales y resultados</p></div>
+      <div class="text-center"><div class="text-4xl md:text-5xl mb-3 md:mb-4">✨</div><h3 class="font-semibold text-lg md:text-xl mb-1 md:mb-2">Estética Cuidada</h3><p class="text-neutral-500 text-xs md:text-sm">Y storytelling visual</p></div>
+      <div class="text-center"><div class="text-4xl md:text-5xl mb-3 md:mb-4">🔥</div><h3 class="font-semibold text-lg md:text-xl mb-1 md:mb-2">Procesos Claros</h3><p class="text-neutral-500 text-xs md:text-sm">Y entregas rápidas</p></div>
      </div>
-     <div class="text-center mt-12"><p class="text-neutral-400 text-lg">Trabajamos como el equipo creativo de tu marca.</p></div>
+     <div class="text-center mt-8 md:mt-12"><p class="text-neutral-400 text-base md:text-lg">Trabajamos como el equipo creativo de tu marca.</p></div>
     </div>
    </section>
    
-   <!-- PORTFOLIO SECTION - CON LAS 10 FOTOS DE INSTAGRAM EN 4 COLUMNAS (FONDO NEGRO) -->
-   <section id="portafolio" class="bg-neutral-950 py-24">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="font-display text-5xl md:text-7xl tracking-tight mb-6 text-center">NUESTRO TRABAJO</h2>
-      <p class="text-neutral-400 text-lg md:text-xl text-center max-w-3xl mx-auto mb-16">
+   <!-- PORTFOLIO SECTION - CON SLIDERS MEJORADOS PARA MÓVIL -->
+   <section id="portafolio" class="bg-neutral-950 py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <h2 class="font-display text-4xl md:text-5xl lg:text-7xl tracking-tight mb-4 md:mb-6 text-center">NUESTRO TRABAJO</h2>
+      <p class="text-neutral-400 text-base md:text-lg lg:text-xl text-center max-w-3xl mx-auto mb-12 md:mb-16">
         Cada proyecto es una oportunidad para contar una historia visual única.
       </p>
 
-      <!-- VIDEOS VERTICALES - 4 a la vez -->
-      <div class="mb-20">
-        <h3 class="text-2xl md:text-3xl font-semibold mb-8 text-neutral-200">Videos Verticales</h3>
+      <!-- VIDEOS VERTICALES - SLIDER MEJORADO -->
+      <div class="mb-16 md:mb-20">
+        <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold mb-6 md:mb-8 text-neutral-200">Videos Verticales</h3>
         <div class="relative">
-          <button onclick="slidePortfolio('vertical', -1)" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full backdrop-blur text-2xl transition-all">‹</button>
-          <div id="vertical-slider" class="flex gap-4 overflow-x-hidden scroll-smooth">
+          <button onclick="slidePortfolio('vertical', -1)" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 px-3 md:px-4 py-1.5 md:py-2 rounded-full backdrop-blur text-xl md:text-2xl transition-all hidden md:block">‹</button>
+          <div id="vertical-slider" class="flex gap-2 md:gap-4 overflow-x-auto scroll-smooth pb-4" style="scrollbar-width: none; -ms-overflow-style: none;">
             
-            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
-              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
-                <div class="aspect-[9/16] w-full rounded-[1rem] overflow-hidden relative">
+            <div class="min-w-[70%] sm:min-w-[45%] md:min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-xl md:rounded-[1.5rem] p-1.5 md:p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-[9/16] w-full rounded-lg md:rounded-[1rem] overflow-hidden relative">
                   <iframe loading="lazy" class="portfolio-video"
-                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:0.5rem md:1rem;"
                     src="https://www.canva.com/design/DAG-_yI6ApE/lYWuASp84PB5_dCm5LTF9Q/watch?embed&autoplay=1&mute=1&loop=1"
                     allowfullscreen
                     allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
@@ -646,11 +773,11 @@
               </div>
             </div>
             
-            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
-              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
-                <div class="aspect-[9/16] w-full rounded-[1rem] overflow-hidden relative">
+            <div class="min-w-[70%] sm:min-w-[45%] md:min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-xl md:rounded-[1.5rem] p-1.5 md:p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-[9/16] w-full rounded-lg md:rounded-[1rem] overflow-hidden relative">
                   <iframe loading="lazy" class="portfolio-video"
-                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:0.5rem md:1rem;"
                     src="https://www.canva.com/design/DAG-_aeQEFw/B1S__Vp61UQeGuX-jiAD3Q/watch?embed&autoplay=1&mute=1&loop=1"
                     allowfullscreen
                     allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
@@ -659,11 +786,11 @@
               </div>
             </div>
             
-            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
-              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
-                <div class="aspect-[9/16] w-full rounded-[1rem] overflow-hidden relative">
+            <div class="min-w-[70%] sm:min-w-[45%] md:min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-xl md:rounded-[1.5rem] p-1.5 md:p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-[9/16] w-full rounded-lg md:rounded-[1rem] overflow-hidden relative">
                   <iframe loading="lazy" class="portfolio-video"
-                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:0.5rem md:1rem;"
                     src="https://www.canva.com/design/DAG-_ViZBIQ/vbYtRhaWtKnsjrZvH-Ftxw/watch?embed&autoplay=1&mute=1&loop=1"
                     allowfullscreen
                     allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
@@ -672,11 +799,11 @@
               </div>
             </div>
             
-            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
-              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
-                <div class="aspect-[9/16] w-full rounded-[1rem] overflow-hidden relative">
+            <div class="min-w-[70%] sm:min-w-[45%] md:min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-xl md:rounded-[1.5rem] p-1.5 md:p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-[9/16] w-full rounded-lg md:rounded-[1rem] overflow-hidden relative">
                   <iframe loading="lazy" class="portfolio-video"
-                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:0.5rem md:1rem;"
                     src="https://www.canva.com/design/DAG-_ZDmjzQ/8h072vROP--CWvPkZs5ZlA/watch?embed&autoplay=1&mute=1&loop=1"
                     allowfullscreen
                     allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
@@ -685,11 +812,11 @@
               </div>
             </div>
             
-            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
-              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
-                <div class="aspect-[9/16] w-full rounded-[1rem] overflow-hidden relative">
+            <div class="min-w-[70%] sm:min-w-[45%] md:min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-xl md:rounded-[1.5rem] p-1.5 md:p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-[9/16] w-full rounded-lg md:rounded-[1rem] overflow-hidden relative">
                   <iframe loading="lazy" class="portfolio-video"
-                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:0.5rem md:1rem;"
                     src="https://www.canva.com/design/DAG-_fL2jEA/Mph9VFQBa4e27NkX-aczYg/watch?embed&autoplay=1&mute=1&loop=1"
                     allowfullscreen
                     allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
@@ -698,11 +825,11 @@
               </div>
             </div>
             
-            <div class="min-w-[calc(25%-12px)] flex-shrink-0">
-              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
-                <div class="aspect-[9/16] w-full rounded-[1rem] overflow-hidden relative">
+            <div class="min-w-[70%] sm:min-w-[45%] md:min-w-[calc(25%-12px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-xl md:rounded-[1.5rem] p-1.5 md:p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-[9/16] w-full rounded-lg md:rounded-[1rem] overflow-hidden relative">
                   <iframe loading="lazy" class="portfolio-video"
-                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:0.5rem md:1rem;"
                     src="https://www.canva.com/design/DAG-_ag0v-M/xRK37Mh2z3wcleiwJhdy6g/watch?embed&autoplay=1&mute=1&loop=1"
                     allowfullscreen
                     allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
@@ -712,22 +839,22 @@
             </div>
             
           </div>
-          <button onclick="slidePortfolio('vertical', 1)" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full backdrop-blur text-2xl transition-all">›</button>
+          <button onclick="slidePortfolio('vertical', 1)" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 px-3 md:px-4 py-1.5 md:py-2 rounded-full backdrop-blur text-xl md:text-2xl transition-all hidden md:block">›</button>
         </div>
       </div>
 
-      <!-- VIDEOS HORIZONTALES - 2 a la vez -->
-      <div class="mb-20">
-        <h3 class="text-2xl md:text-3xl font-semibold mb-8 text-neutral-200">Videos Horizontales</h3>
+      <!-- VIDEOS HORIZONTALES - SLIDER MEJORADO -->
+      <div class="mb-16 md:mb-20">
+        <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold mb-6 md:mb-8 text-neutral-200">Videos Horizontales</h3>
         <div class="relative">
-          <button onclick="slidePortfolio('horizontal', -1)" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full backdrop-blur text-2xl transition-all">‹</button>
-          <div id="horizontal-slider" class="flex gap-4 overflow-x-hidden scroll-smooth">
+          <button onclick="slidePortfolio('horizontal', -1)" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 px-3 md:px-4 py-1.5 md:py-2 rounded-full backdrop-blur text-xl md:text-2xl transition-all hidden md:block">‹</button>
+          <div id="horizontal-slider" class="flex gap-3 md:gap-4 overflow-x-auto scroll-smooth pb-4" style="scrollbar-width: none; -ms-overflow-style: none;">
             
-            <div class="min-w-[calc(50%-8px)] flex-shrink-0">
-              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
-                <div class="aspect-video w-full rounded-[1rem] overflow-hidden relative">
+            <div class="min-w-[85%] sm:min-w-[60%] md:min-w-[calc(50%-8px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-xl md:rounded-[1.5rem] p-1.5 md:p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-video w-full rounded-lg md:rounded-[1rem] overflow-hidden relative">
                   <iframe loading="lazy" class="portfolio-video"
-                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:0.5rem md:1rem;"
                     src="https://www.canva.com/design/DAG-_LBMhuM/Cl_W1YaqWFys3ndw0xsM6A/watch?embed&autoplay=1&mute=1&loop=1"
                     allowfullscreen
                     allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
@@ -736,11 +863,11 @@
               </div>
             </div>
             
-            <div class="min-w-[calc(50%-8px)] flex-shrink-0">
-              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
-                <div class="aspect-video w-full rounded-[1rem] overflow-hidden relative">
+            <div class="min-w-[85%] sm:min-w-[60%] md:min-w-[calc(50%-8px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-xl md:rounded-[1.5rem] p-1.5 md:p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-video w-full rounded-lg md:rounded-[1rem] overflow-hidden relative">
                   <iframe loading="lazy" class="portfolio-video"
-                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:0.5rem md:1rem;"
                     src="https://www.canva.com/design/DAG-_mBMQs4/l9TySmu24rkvsoz5rdAllg/watch?embed&autoplay=1&mute=1&loop=1"
                     allowfullscreen
                     allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
@@ -749,11 +876,11 @@
               </div>
             </div>
             
-            <div class="min-w-[calc(50%-8px)] flex-shrink-0">
-              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-2 hover:border-pink-500/40 transition-all duration-500">
-                <div class="aspect-video w-full rounded-[1rem] overflow-hidden relative">
+            <div class="min-w-[85%] sm:min-w-[60%] md:min-w-[calc(50%-8px)] flex-shrink-0">
+              <div class="portfolio-card bg-white/[0.02] border border-white/10 rounded-xl md:rounded-[1.5rem] p-1.5 md:p-2 hover:border-pink-500/40 transition-all duration-500">
+                <div class="aspect-video w-full rounded-lg md:rounded-[1rem] overflow-hidden relative">
                   <iframe loading="lazy" class="portfolio-video"
-                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:1rem;"
+                    style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;border-radius:0.5rem md:1rem;"
                     src="https://www.canva.com/design/DAG-_z1svKM/cfgwWM9z-fgJjuX0q0c0mw/watch?embed&autoplay=1&mute=1&loop=1"
                     allowfullscreen
                     allow="autoplay; fullscreen; encrypted-media; picture-in-picture; loop">
@@ -763,60 +890,60 @@
             </div>
             
           </div>
-          <button onclick="slidePortfolio('horizontal', 1)" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full backdrop-blur text-2xl transition-all">›</button>
+          <button onclick="slidePortfolio('horizontal', 1)" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 px-3 md:px-4 py-1.5 md:py-2 rounded-full backdrop-blur text-xl md:text-2xl transition-all hidden md:block">›</button>
         </div>
       </div>
 
-      <!-- FOTOS - 4 COLUMNAS CON SCROLL (10 PUBLICACIONES DE INSTAGRAM) -->
-      <div class="mb-20">
-        <h3 class="text-2xl md:text-3xl font-semibold mb-8 text-center mt-20 text-neutral-200">Fotos</h3>
+      <!-- FOTOS - 4 COLUMNAS (ajustado para móvil) -->
+      <div class="mb-16 md:mb-20">
+        <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold mb-6 md:mb-8 text-center mt-12 md:mt-20 text-neutral-200">Fotos</h3>
         
-        <!-- 4 Columnas con scroll vertical -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 4 Columnas con scroll vertical - EN MÓVIL SE APILAN -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
          
          <!-- Columna 1 -->
-         <div class="instagram-column p-4">
-          <h4 class="text-lg font-semibold text-neutral-300 mb-4 text-center border-b border-white/10 pb-2">Proyectos 1</h4>
+         <div class="instagram-column p-3 md:p-4 h-auto md:h-[600px] max-h-[450px] md:max-h-[600px]">
+          <h4 class="text-base md:text-lg font-semibold text-neutral-300 mb-3 md:mb-4 text-center border-b border-white/10 pb-1 md:pb-2">Proyectos 1</h4>
           <!-- Publicación 1: @sapoperroproject_ -->
           <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DNRjNxMJGZq/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px 0 16px 0; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DNRjNxMJGZq/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver esta publicación en Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DNRjNxMJGZq/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Una publicación compartida por SapoPerro (@sapoperroproject_)</a></p></div></blockquote>
           
-          <!-- Publicación 2: @sapoperroproject_ - Segunda -->
+          <!-- Publicación 2: @sapoperroproject_ - Segunda (mantener todo igual) -->
           <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DCKkdn4JfYj/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px 0 16px 0; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DCKkdn4JfYj/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver esta publicación en Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DCKkdn4JfYj/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Una publicación compartida por SapoPerro (@sapoperroproject_)</a></p></div></blockquote>
           
-          <!-- Publicación 3: @casa.manglar -->
+          <!-- Publicación 3: @casa.manglar (mantener) -->
           <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DKvKTpoJc6Y/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px 0 16px 0; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DKvKTpoJc6Y/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver esta publicación en Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DKvKTpoJc6Y/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Una publicación compartida por Casa Manglar Group (@casa.manglar)</a></p></div></blockquote>
          </div>
          
          <!-- Columna 2 -->
-         <div class="instagram-column p-4">
-          <h4 class="text-lg font-semibold text-neutral-300 mb-4 text-center border-b border-white/10 pb-2">Proyectos 2</h4>
-          <!-- Publicación 4: @chrisgarzoncph -->
+         <div class="instagram-column p-3 md:p-4 h-auto md:h-[600px] max-h-[450px] md:max-h-[600px]">
+          <h4 class="text-base md:text-lg font-semibold text-neutral-300 mb-3 md:mb-4 text-center border-b border-white/10 pb-1 md:pb-2">Proyectos 2</h4>
+          <!-- Publicación 4: @chrisgarzoncph (mantener) -->
           <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DVHrGBDjsey/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px 0 16px 0; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DVHrGBDjsey/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver esta publicación en Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DVHrGBDjsey/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Una publicación compartida por Cristian Garzon Carrero (@chrisgarzoncph)</a></p></div></blockquote>
           
-          <!-- Publicación 5: @laurabttg -->
+          <!-- Publicación 5: @laurabttg (mantener) -->
           <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DP4MU-zkUmi/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px 0 16px 0; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DP4MU-zkUmi/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver esta publicación en Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DP4MU-zkUmi/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Una publicación compartida por Laura Buitrago (@laurabttg)</a></p></div></blockquote>
           
-          <!-- Publicación 6: @angiegarcia999 -->
+          <!-- Publicación 6: @angiegarcia999 (mantener) -->
           <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/C2imwZPxTRb/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px 0 16px 0; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/C2imwZPxTRb/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver esta publicación en Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/C2imwZPxTRb/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Una publicación compartida por Angie Garcia (@angiegarcia999)</a></p></div></blockquote>
          </div>
          
          <!-- Columna 3 -->
-         <div class="instagram-column p-4">
-          <h4 class="text-lg font-semibold text-neutral-300 mb-4 text-center border-b border-white/10 pb-2">Proyectos 3</h4>
-          <!-- Publicación 7: @jac.electricos -->
+         <div class="instagram-column p-3 md:p-4 h-auto md:h-[600px] max-h-[450px] md:max-h-[600px]">
+          <h4 class="text-base md:text-lg font-semibold text-neutral-300 mb-3 md:mb-4 text-center border-b border-white/10 pb-1 md:pb-2">Proyectos 3</h4>
+          <!-- Publicación 7: @jac.electricos (mantener) -->
           <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DMi0IaKy1sS/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px 0 16px 0; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DMi0IaKy1sS/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver esta publicación en Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DMi0IaKy1sS/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Una publicación compartida por JAC Eléctricos (@jac.electricos)</a></p></div></blockquote>
           
-          <!-- Publicación 8: @hydden___ - Primera -->
+          <!-- Publicación 8: @hydden___ - Primera (mantener) -->
           <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DINI5Ypt0Lo/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px 0 16px 0; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DINI5Ypt0Lo/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver esta publicación en Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DINI5Ypt0Lo/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Una publicación compartida por •Hydden• (@hydden___)</a></p></div></blockquote>
          </div>
          
          <!-- Columna 4 -->
-         <div class="instagram-column p-4">
-          <h4 class="text-lg font-semibold text-neutral-300 mb-4 text-center border-b border-white/10 pb-2">Proyectos 4</h4>
-          <!-- Publicación 9: @hydden___ - Segunda -->
+         <div class="instagram-column p-3 md:p-4 h-auto md:h-[600px] max-h-[450px] md:max-h-[600px]">
+          <h4 class="text-base md:text-lg font-semibold text-neutral-300 mb-3 md:mb-4 text-center border-b border-white/10 pb-1 md:pb-2">Proyectos 4</h4>
+          <!-- Publicación 9: @hydden___ - Segunda (mantener) -->
           <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/CzryojugmtO/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px 0 16px 0; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/CzryojugmtO/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver esta publicación en Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/CzryojugmtO/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Una publicación compartida por •Hydden• (@hydden___)</a></p></div></blockquote>
           
-          <!-- Publicación 10: @jetourcolombia -->
+          <!-- Publicación 10: @jetourcolombia (mantener) -->
           <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DNbhnBGuUQu/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px 0 16px 0; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DNbhnBGuUQu/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver esta publicación en Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DNbhnBGuUQu/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Una publicación compartida por Jetour Colombia (@jetourcolombia)</a></p></div></blockquote>
          </div>
          
@@ -838,6 +965,19 @@
       itemsToShow = 2;
     }
     
+    // En móvil, el cálculo es diferente porque los items tienen ancho porcentual
+    if (window.innerWidth <= 768) {
+      const itemWidth = slider.children[0]?.offsetWidth || 0;
+      const scrollAmount = itemWidth * (type === 'vertical' ? 1 : 1); // Avanza un item en móvil
+      
+      slider.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+      });
+      return;
+    }
+    
+    // En desktop, cálculo original
     const containerWidth = slider.offsetWidth;
     const gap = 16;
     const itemWidth = (containerWidth - (gap * (itemsToShow - 1))) / itemsToShow;
@@ -848,42 +988,85 @@
       behavior: 'smooth'
     });
   }
+
+  // Mejorar el touch en sliders
+  document.addEventListener('DOMContentLoaded', function() {
+    const sliders = document.querySelectorAll('#vertical-slider, #horizontal-slider');
+    sliders.forEach(slider => {
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.style.cursor = 'grabbing';
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+      });
+
+      slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.style.cursor = 'grab';
+      });
+
+      slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.style.cursor = 'grab';
+      });
+
+      slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2; // Velocidad del arrastre
+        slider.scrollLeft = scrollLeft - walk;
+      });
+
+      // Mejorar el snap en móvil
+      if (window.innerWidth <= 768) {
+        slider.style.scrollSnapType = 'x mandatory';
+        Array.from(slider.children).forEach(child => {
+          child.style.scrollSnapAlign = 'start';
+        });
+      }
+    });
+  });
   </script>
   
-  <!-- Contact Section -->
-   <section id="contacto" class="py-24 md:py-32 px-6">
+  <!-- Contact Section (con ajustes responsivos) -->
+   <section id="contacto" class="py-16 md:py-24 lg:py-32 px-4 md:px-6">
     <div class="max-w-4xl mx-auto">
-     <div class="text-center mb-16">
-      <h2 id="contact-title" class="font-display text-5xl md:text-7xl tracking-tight mb-6">HABLEMOS</h2>
-      <p class="text-neutral-400 text-lg max-w-2xl mx-auto">Si llegaste hasta aquí, tu marca ya va un paso adelante.</p>
-      <p class="text-neutral-500 mt-4">📩 Escríbenos y cuéntanos tu idea</p>
+     <div class="text-center mb-12 md:mb-16">
+      <h2 id="contact-title" class="font-display text-4xl md:text-5xl lg:text-7xl tracking-tight mb-4 md:mb-6">HABLEMOS</h2>
+      <p class="text-neutral-400 text-base md:text-lg max-w-2xl mx-auto">Si llegaste hasta aquí, tu marca ya va un paso adelante.</p>
+      <p class="text-neutral-500 mt-3 md:mt-4 text-sm md:text-base">📩 Escríbenos y cuéntanos tu idea</p>
      </div>
-     <form id="contact-form" class="space-y-6">
-      <div class="grid md:grid-cols-2 gap-6">
-       <div><label for="name" class="block text-sm font-medium text-neutral-400 mb-2">Nombre</label> <input type="text" id="name" name="name" required class="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30 transition-colors placeholder-neutral-600" placeholder="Tu nombre">
+     <form id="contact-form" class="space-y-4 md:space-y-6">
+      <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+       <div><label for="name" class="block text-xs md:text-sm font-medium text-neutral-400 mb-1 md:mb-2">Nombre</label> <input type="text" id="name" name="name" required class="w-full px-4 md:px-5 py-3 md:py-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30 transition-colors placeholder-neutral-600 text-sm md:text-base" placeholder="Tu nombre">
        </div>
-       <div><label for="email" class="block text-sm font-medium text-neutral-400 mb-2">Email</label> <input type="email" id="email" name="email" required class="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30 transition-colors placeholder-neutral-600" placeholder="tu@email.com">
+       <div><label for="email" class="block text-xs md:text-sm font-medium text-neutral-400 mb-1 md:mb-2">Email</label> <input type="email" id="email" name="email" required class="w-full px-4 md:px-5 py-3 md:py-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30 transition-colors placeholder-neutral-600 text-sm md:text-base" placeholder="tu@email.com">
        </div>
       </div>
-      <div><label for="service" class="block text-sm font-medium text-neutral-400 mb-2">¿Qué servicio te interesa?</label> <select id="service" name="service" class="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30 transition-colors text-white appearance-none cursor-pointer"> <option value="" class="bg-neutral-900">Selecciona una opción</option> <option value="basico" class="bg-neutral-900">Paquete Básico</option> <option value="pro" class="bg-neutral-900">Paquete Pro</option> <option value="premium" class="bg-neutral-900">Paquete Premium</option> <option value="otro" class="bg-neutral-900">Otro / Proyecto especial</option> </select>
+      <div><label for="service" class="block text-xs md:text-sm font-medium text-neutral-400 mb-1 md:mb-2">¿Qué servicio te interesa?</label> <select id="service" name="service" class="w-full px-4 md:px-5 py-3 md:py-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30 transition-colors text-white appearance-none cursor-pointer text-sm md:text-base"> <option value="" class="bg-neutral-900">Selecciona una opción</option> <option value="basico" class="bg-neutral-900">Paquete Básico</option> <option value="pro" class="bg-neutral-900">Paquete Pro</option> <option value="premium" class="bg-neutral-900">Paquete Premium</option> <option value="otro" class="bg-neutral-900">Otro / Proyecto especial</option> </select>
       </div>
-      <div><label for="message" class="block text-sm font-medium text-neutral-400 mb-2">Mensaje</label> <textarea id="message" name="message" rows="5" class="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30 transition-colors placeholder-neutral-600 resize-none" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
-      </div><button type="submit" class="btn-primary w-full py-5 rounded-xl font-semibold text-neutral-900 text-lg"> Enviar mensaje </button>
+      <div><label for="message" class="block text-xs md:text-sm font-medium text-neutral-400 mb-1 md:mb-2">Mensaje</label> <textarea id="message" name="message" rows="4" class="w-full px-4 md:px-5 py-3 md:py-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30 transition-colors placeholder-neutral-600 resize-none text-sm md:text-base" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+      </div><button type="submit" class="btn-primary w-full py-4 md:py-5 rounded-xl font-semibold text-neutral-900 text-base md:text-lg"> Enviar mensaje </button>
      </form>
-     <div id="form-success" class="hidden text-center py-12">
-      <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-green-500/20 flex items-center justify-center">
-       <svg class="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+     <div id="form-success" class="hidden text-center py-8 md:py-12">
+      <div class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-green-500/20 flex items-center justify-center">
+       <svg class="w-8 h-8 md:w-10 md:h-10 text-green-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
        </svg>
       </div>
-      <h3 class="font-display text-3xl mb-2">¡MENSAJE ENVIADO!</h3>
-      <p class="text-neutral-400">Te responderemos pronto. ¡Gracias por contactarnos!</p>
+      <h3 class="font-display text-2xl md:text-3xl mb-2">¡MENSAJE ENVIADO!</h3>
+      <p class="text-neutral-400 text-sm md:text-base">Te responderemos pronto. ¡Gracias por contactarnos!</p>
      </div>
-     <div class="mt-16 flex flex-wrap justify-center gap-8 text-neutral-500"><a href="mailto:fotolab.studio@gmail.com" class="flex items-center gap-2 hover:text-white transition-colors">
-       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+     <div class="mt-12 md:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8 text-neutral-500"><a href="mailto:fotolab.studio@gmail.com" class="flex items-center gap-2 hover:text-white transition-colors text-sm md:text-base">
+       <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-       </svg> fotolab.studio@gmail.com </a> <a href="https://instagram.com/fotolabstudio" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-white transition-colors">
-       <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+       </svg> fotolab.studio@gmail.com </a> <a href="https://instagram.com/fotolabstudio" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-white transition-colors text-sm md:text-base">
+       <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewbox="0 0 24 24">
         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
        </svg> @fotolabstudio </a>
      </div>
@@ -891,9 +1074,9 @@
    </section>
    
    <!-- Footer -->
-   <footer class="py-8 px-6 border-t border-white/10">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4"><a href="#" class="font-display text-2xl tracking-wider">FOTOLAB STUDIO</a>
-     <p class="text-neutral-600 text-sm italic">Contenido audiovisual con intención</p>
+   <footer class="py-6 md:py-8 px-4 md:px-6 border-t border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4"><a href="#" class="font-display text-xl md:text-2xl tracking-wider">FOTOLAB STUDIO</a>
+     <p class="text-neutral-600 text-2xs md:text-sm italic">Contenido audiovisual con intención</p>
     </div>
    </footer>
   </div>
