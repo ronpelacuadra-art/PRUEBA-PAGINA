@@ -348,26 +348,30 @@
     </div>
    </nav>
    
-   <!-- Hero Section - VERSIÓN CORREGIDA CON NUEVO VIDEO -->
+  <!-- Hero Section - CON AUTOPLAY MEJORADO Y NUEVO VIDEO -->
 <section id="inicio" class="relative min-h-screen flex flex-col">
-  <!-- Contenedor del video - CON ALTURA FIJA EN MÓVIL -->
+  <!-- Contenedor del video -->
   <div class="relative w-full h-[70vh] md:h-screen overflow-hidden bg-black">
-    <!-- Video de fondo full-screen - NUEVO VIDEO DE YOUTUBE -->
+    <!-- Fondo alternativo mientras carga -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/80 to-black/40 z-0"></div>
+    
+    <!-- Video con enfoque en autoplay -->
     <div class="absolute inset-0 w-full h-full">
       <iframe 
+        id="hero-video"
         class="absolute w-full h-full"
         style="width: 100%; height: 100%; border: none; object-fit: cover;"
-        src="https://www.youtube.com/embed/71H-4FokXB4?autoplay=1&muted=1&loop=1&playlist=71H-4FokXB4&controls=0&modestbranding=1&rel=0&playsinline=1" 
+        src="https://www.youtube.com/embed/71H-4FokXB4?autoplay=1&muted=1&loop=1&playlist=71H-4FokXB4&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1&enablejsapi=1" 
         referrerpolicy="strict-origin-when-cross-origin"
         allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
         allowfullscreen
         title="PhotoLab Studio Reel 2026">
       </iframe>
-      <!-- Overlay oscuro MÁS FUERTE EN MÓVIL para legibilidad -->
-      <div class="absolute inset-0 bg-black/50 md:bg-black/40"></div>
+      <!-- Overlay oscuro -->
+      <div class="absolute inset-0 bg-black/50 md:bg-black/40 z-0 pointer-events-none"></div>
     </div>
     
-    <!-- Contenedor de textos - CORREGIDO: ahora en la parte inferior -->
+    <!-- Contenedor de textos -->
     <div class="absolute bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 z-10 w-full max-w-5xl px-6 text-center pointer-events-none">
       <div class="w-full">
         <h1 id="hero-title" class="font-display text-4xl md:text-6xl lg:text-7xl leading-tight md:leading-none tracking-tight mb-4">
@@ -401,6 +405,47 @@
     </div>
   </div>
 </section>
+
+<!-- SCRIPT PARA FORZAR AUTOPLAY EN MÓVIL -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Forzar autoplay tocando la pantalla (solución para móviles)
+    const videoIframe = document.getElementById('hero-video');
+    
+    function tryPlayVideo() {
+      if (videoIframe) {
+        // Recargar iframe con un pequeño truco para forzar reproducción
+        const currentSrc = videoIframe.src;
+        if (currentSrc && !currentSrc.includes('autoplay=1')) {
+          videoIframe.src = currentSrc + '&autoplay=1';
+        }
+      }
+    }
+    
+    // Intentar al cargar
+    tryPlayVideo();
+    
+    // También al tocar cualquier parte de la pantalla (por si el navegador bloquea)
+    const heroSection = document.querySelector('#inicio');
+    if (heroSection) {
+      heroSection.addEventListener('touchstart', function() {
+        setTimeout(tryPlayVideo, 100);
+      }, { once: true });
+      
+      heroSection.addEventListener('click', function() {
+        setTimeout(tryPlayVideo, 100);
+      }, { once: true });
+    }
+    
+    // Si el usuario interactúa con el video directamente
+    if (videoIframe) {
+      videoIframe.addEventListener('load', function() {
+        // Pequeño retraso para asegurar que el iframe esté listo
+        setTimeout(tryPlayVideo, 500);
+      });
+    }
+  });
+</script>
 
    <!-- Services Section (sin cambios estructurales, los estilos CSS ya lo ajustan) -->
    <section id="servicios" class="py-16 md:py-24 lg:py-32 px-4 md:px-6">
