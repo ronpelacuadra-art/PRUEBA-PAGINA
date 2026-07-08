@@ -80,3 +80,37 @@ body {
 .nav-link:hover::after {
   width: 100%;
 }
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  h1.font-display.text-4xl {
+    font-size: 2.5rem !important;
+    line-height: 1.2 !important;
+  }
+  h2.font-display.text-4xl {
+    font-size: 2rem !important;
+  }
+  h2.font-display.text-5xl {
+    font-size: 2.5rem !important;
+  }
+  section.py-24 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  .whatsapp-pulse, .px-10.py-4 {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 1rem !important;
+    width: 100%;
+    text-align: center;
+  }
+  .flex-col.sm\:flex-row {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  iframe[src*="instagram.com"] {
+    height: 350px !important;
+  }
+}
