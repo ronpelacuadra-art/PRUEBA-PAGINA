@@ -2,52 +2,31 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { Volume2, VolumeX } from "lucide-react";
 
 declare global {
   interface Window {
-    YT: {
-      Player: {
-        new (
-          elementId: string,
-          config: {
-            videoId: string;
-            playerVars?: Record<string, string | number>;
-            events?: {
-              onReady?: () => void;
-              onStateChange?: (e: { data: number }) => void;
-            };
-          }
-        ): YTPlayer;
-      };
-      PlayerState: {
-        PLAYING: number;
-      };
-    };
     onYouTubeIframeAPIReady: () => void;
+    YT: {
+      Player: new (id: string, config: Record<string, unknown>) => YTPlayer;
+      PlayerState: { PLAYING: number };
+    };
   }
 }
 
 interface YTPlayer {
   playVideo: () => void;
-  pauseVideo: () => void;
   mute: () => void;
   unMute: () => void;
+  setVolume: (v: number) => void;
 }
 
 export default function Hero() {
   const playerRef = useRef<YTPlayer | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [muted, setMuted] = useState(true);
   const [playerReady, setPlayerReady] = useState(false);
 
   useEffect(() => {
-    const playerDiv = document.createElement("div");
-    playerDiv.id = "hero-youtube-player";
-    const target = containerRef.current;
-    if (target) {
-      target.innerHTML = "";
-      target.appendChild(playerDiv);
-    }
-
     if (typeof window.YT === "undefined") {
       const tag = document.createElement("script");
       tag.src = "https://www.youtube.com/iframe_api";
@@ -57,7 +36,7 @@ export default function Hero() {
 
     const createPlayer = () => {
       if (!window.YT?.Player) return;
-      const player = new window.YT.Player("hero-youtube-player", {
+      const p = new window.YT.Player("hero-youtube-player", {
         videoId: "71H-4FokXB4",
         playerVars: {
           autoplay: 1,
@@ -70,15 +49,16 @@ export default function Hero() {
           playsinline: 1,
           disablekb: 1,
           enablejsapi: 1,
+          origin: window.location.origin,
         },
         events: {
           onReady: () => {
             setPlayerReady(true);
-            player.playVideo();
+            p.playVideo();
           },
         },
       });
-      playerRef.current = player;
+      playerRef.current = p;
     };
 
     if (window.YT?.Player) {
@@ -87,43 +67,67 @@ export default function Hero() {
       window.onYouTubeIframeAPIReady = createPlayer;
     }
 
-    const handleInteraction = () => {
+    const unmuteOnInteraction = () => {
       if (playerRef.current) {
-        playerRef.current.playVideo();
+        playerRef.current.unMute();
+        playerRef.current.setVolume(100);
+        setMuted(false);
       }
-      document.removeEventListener("touchstart", handleInteraction);
-      document.removeEventListener("click", handleInteraction);
+      document.removeEventListener("touchstart", unmuteOnInteraction);
+      document.removeEventListener("click", unmuteOnInteraction);
     };
 
-    document.addEventListener("touchstart", handleInteraction, { once: true });
-    document.addEventListener("click", handleInteraction, { once: true });
+    document.addEventListener("touchstart", unmuteOnInteraction, {
+      once: true,
+    });
+    document.addEventListener("click", unmuteOnInteraction, { once: true });
 
     return () => {
-      document.removeEventListener("touchstart", handleInteraction);
-      document.removeEventListener("click", handleInteraction);
+      document.removeEventListener("touchstart", unmuteOnInteraction);
+      document.removeEventListener("click", unmuteOnInteraction);
     };
   }, []);
+
+  const toggleMute = () => {
+    if (!playerRef.current) return;
+    if (muted) {
+      playerRef.current.unMute();
+      playerRef.current.setVolume(100);
+      setMuted(false);
+    } else {
+      playerRef.current.mute();
+      setMuted(true);
+    }
+  };
 
   return (
     <section id="inicio" className="relative min-h-screen flex flex-col">
       <div className="relative w-full h-screen overflow-hidden bg-black">
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/40 z-10 pointer-events-none" />
-        <div
-          ref={containerRef}
-          className="absolute inset-0 w-full h-full"
-          style={{ pointerEvents: "none" }}
-        />
-        {!playerReady && (
-          <div
-            className="absolute inset-0 z-0 bg-cover bg-center"
-            style={{
-              backgroundImage:
-                "url(https://img.youtube.com/vi/71H-4FokXB4/maxresdefault.jpg)",
-            }}
-          >
-            <div className="absolute inset-0 bg-black/50" />
-          </div>
-        )}
+        <div className="absolute inset-0 w-full h-full">
+          <div id="hero-youtube-player" className="absolute inset-0 w-full h-full" />
+          {!playerReady && (
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage:
+                  "url(https://img.youtube.com/vi/71H-4FokXB4/maxresdefault.jpg)",
+              }}
+            >
+              <div className="absolute inset-0 bg-black/50" />
+            </div>
+          )}
+          <div className="absolute inset-0 bg-black/50 md:bg-black/40 z-10 pointer-events-none" />
+        </div>
+
+        <button
+          onClick={toggleMute}
+          className="absolute bottom-32 md:bottom-40 right-6 z-30 bg-white/10 hover:bg-white/20 backdrop-blur p-3 rounded-full transition-all"
+          aria-label={muted ? "Activar sonido" : "Silenciar"}
+        >
+          {muted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+        </button>
+
         <div className="absolute bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 z-20 w-full max-w-5xl px-6 text-center">
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl leading-tight md:leading-none tracking-tight mb-4">
             EL <span className="gradient-text">LABORATORIO</span> DONDE TU
