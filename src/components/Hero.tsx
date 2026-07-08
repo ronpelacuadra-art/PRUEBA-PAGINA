@@ -1,32 +1,96 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
+declare global {
+  interface Window {
+    YT: {
+      Player: {
+        new (
+          elementId: string,
+          config: {
+            videoId: string;
+            playerVars?: Record<string, string | number>;
+            events?: {
+              onReady?: () => void;
+              onStateChange?: (e: { data: number }) => void;
+            };
+          }
+        ): YTPlayer;
+      };
+      PlayerState: {
+        PLAYING: number;
+      };
+    };
+    onYouTubeIframeAPIReady: () => void;
+  }
+}
+
+interface YTPlayer {
+  playVideo: () => void;
+  pauseVideo: () => void;
+  mute: () => void;
+  unMute: () => void;
+}
+
 export default function Hero() {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const playerRef = useRef<YTPlayer | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [playerReady, setPlayerReady] = useState(false);
 
   useEffect(() => {
-    const iframe = iframeRef.current;
-    if (!iframe) return;
+    const playerDiv = document.createElement("div");
+    playerDiv.id = "hero-youtube-player";
+    const target = containerRef.current;
+    if (target) {
+      target.innerHTML = "";
+      target.appendChild(playerDiv);
+    }
 
-    const forcePlay = () => {
-      const src = iframe.src;
-      if (!src.includes("_t=")) {
-        iframe.src = src + "&_t=" + Date.now();
-      }
+    if (typeof window.YT === "undefined") {
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScript = document.getElementsByTagName("script")[0];
+      firstScript?.parentNode?.insertBefore(tag, firstScript);
+    }
+
+    const createPlayer = () => {
+      if (!window.YT?.Player) return;
+      const player = new window.YT.Player("hero-youtube-player", {
+        videoId: "71H-4FokXB4",
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          loop: 1,
+          playlist: "71H-4FokXB4",
+          controls: 0,
+          modestbranding: 1,
+          rel: 0,
+          playsinline: 1,
+          disablekb: 1,
+          enablejsapi: 1,
+        },
+        events: {
+          onReady: () => {
+            setPlayerReady(true);
+            player.playVideo();
+          },
+        },
+      });
+      playerRef.current = player;
     };
 
-    const isMobile = /Android|webOS|iPhone|iPad|iPod/i.test(
-      navigator.userAgent
-    );
-
-    if (!isMobile) {
-      forcePlay();
+    if (window.YT?.Player) {
+      createPlayer();
+    } else {
+      window.onYouTubeIframeAPIReady = createPlayer;
     }
 
     const handleInteraction = () => {
-      forcePlay();
+      if (playerRef.current) {
+        playerRef.current.playVideo();
+      }
       document.removeEventListener("touchstart", handleInteraction);
       document.removeEventListener("click", handleInteraction);
     };
@@ -41,30 +105,26 @@ export default function Hero() {
   }, []);
 
   return (
-    <section
-      id="inicio"
-      className="relative min-h-screen flex flex-col"
-    >
+    <section id="inicio" className="relative min-h-screen flex flex-col">
       <div className="relative w-full h-screen overflow-hidden bg-black">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/40 z-10" />
-        <div className="absolute inset-0 w-full h-full">
-          <iframe
-            ref={iframeRef}
-            className="absolute w-full h-full"
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/40 z-10 pointer-events-none" />
+        <div
+          ref={containerRef}
+          className="absolute inset-0 w-full h-full"
+          style={{ pointerEvents: "none" }}
+        />
+        {!playerReady && (
+          <div
+            className="absolute inset-0 z-0 bg-cover bg-center"
             style={{
-              width: "100%",
-              height: "100%",
-              border: "none",
-              objectFit: "cover",
+              backgroundImage:
+                "url(https://img.youtube.com/vi/71H-4FokXB4/maxresdefault.jpg)",
             }}
-            src="https://www.youtube.com/embed/71H-4FokXB4?autoplay=1&muted=1&loop=1&playlist=71H-4FokXB4&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1&enablejsapi=1"
-            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-            allowFullScreen
-            title="Fotolab Studio Reel 2026"
-          />
-          <div className="absolute inset-0 bg-black/50 md:bg-black/40 z-10 pointer-events-none" />
-        </div>
-        <div className="absolute bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 z-20 w-full max-w-5xl px-6 text-center pointer-events-none">
+          >
+            <div className="absolute inset-0 bg-black/50" />
+          </div>
+        )}
+        <div className="absolute bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 z-20 w-full max-w-5xl px-6 text-center">
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl leading-tight md:leading-none tracking-tight mb-4">
             EL <span className="gradient-text">LABORATORIO</span> DONDE TU
             MARCA COBRA VIDA
