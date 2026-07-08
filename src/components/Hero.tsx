@@ -1,22 +1,22 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { Volume2, VolumeX } from "lucide-react";
 
 export default function Hero() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [muted, setMuted] = useState(true);
-  const [showUnmuteHint, setShowUnmuteHint] = useState(true);
+  const [showHint, setShowHint] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowUnmuteHint(false), 4000);
+    const timer = setTimeout(() => setShowHint(false), 5000);
     return () => clearTimeout(timer);
   }, []);
 
   const toggleMute = () => {
     setMuted((prev) => !prev);
-    setShowUnmuteHint(false);
+    setShowHint(false);
     const iframe = iframeRef.current;
     if (iframe) {
       iframe.src = iframe.src.replace(/&_t=\d+/, "") + "&_t=" + Date.now();
@@ -28,42 +28,33 @@ export default function Hero() {
       <div className="relative w-full h-screen overflow-hidden bg-black">
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 z-10 pointer-events-none" />
 
-        <div className="absolute inset-0 overflow-hidden">
-          <div
-            className="absolute"
+        <div className="absolute inset-0 w-full h-full">
+          <iframe
+            ref={iframeRef}
+            className="hero-video w-full h-full"
             style={{
-              top: "50%",
-              left: "50%",
-              width: "100vw",
-              height: "56.25vw",
-              minHeight: "100vh",
-              minWidth: "177.77vh",
-              transform: "translate(-50%, -50%)",
+              border: "none",
+              pointerEvents: "none",
+              objectFit: "cover",
             }}
-          >
-            <iframe
-              ref={iframeRef}
-              className="absolute inset-0 w-full h-full"
-              style={{ border: "none", pointerEvents: "none" }}
-              src={`https://www.youtube.com/embed/71H-4FokXB4?autoplay=1&mute=1&loop=1&playlist=71H-4FokXB4&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1`}
-              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-              allowFullScreen
-              title="Fotolab Studio Reel 2026"
-            />
-          </div>
+            src={`https://www.youtube.com/embed/71H-4FokXB4?autoplay=1&mute=1&loop=1&playlist=71H-4FokXB4&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1`}
+            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+            allowFullScreen
+            title="Fotolab Studio Reel 2026"
+          />
         </div>
 
-        {showUnmuteHint && (
-          <div className="absolute bottom-36 md:bottom-44 left-1/2 -translate-x-1/2 z-30">
-            <div className="bg-black/60 backdrop-blur text-white text-xs px-4 py-2 rounded-full animate-pulse whitespace-nowrap">
-              🔇 Toca el ícono de volumen para activar sonido
+        {showHint && (
+          <div className="absolute bottom-36 left-1/2 -translate-x-1/2 z-30">
+            <div className="bg-black/70 backdrop-blur text-white text-xs px-4 py-2 rounded-full animate-pulse whitespace-nowrap">
+              Toca el ícono de volumen para activar sonido 🔊
             </div>
           </div>
         )}
 
         <button
           onClick={toggleMute}
-          className="absolute bottom-32 md:bottom-40 right-6 z-30 bg-white/10 hover:bg-white/20 backdrop-blur p-3 rounded-full transition-all"
+          className="absolute bottom-28 md:bottom-36 right-6 z-30 bg-white/10 hover:bg-white/20 backdrop-blur p-3 rounded-full transition-all"
           aria-label={muted ? "Activar sonido" : "Silenciar"}
         >
           {muted ? <VolumeX size={20} /> : <Volume2 size={20} />}

@@ -11,7 +11,7 @@ export default function WhyFotolab() {
             ejecutamos contenido con estrategia.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
           {[
             {
               emoji: "🎬",

@@ -57,7 +57,7 @@ export default function Portfolio() {
             <h3 className="text-lg md:text-2xl lg:text-3xl font-semibold mb-4 md:mb-6 text-neutral-200">
               {section.title}
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
               {section.posts.map((post, pi) => (
                 <div
                   key={pi}

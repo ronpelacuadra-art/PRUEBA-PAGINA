@@ -111,6 +111,20 @@ body {
 
 @media (max-width: 480px) {
   iframe[src*="instagram.com"] {
-    height: 350px !important;
+    height: 280px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-video {
+    object-fit: contain !important;
+  }
+  .grid > .gap-6 {
+    gap: 0.75rem;
+  }
+  section {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+    --gap: 0.5rem;
   }
 }
