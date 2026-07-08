@@ -2,28 +2,26 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Volume2, VolumeX } from "lucide-react";
+import { Volume2, VolumeX, Play } from "lucide-react";
 
 export default function Hero() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [muted, setMuted] = useState(true);
-  const [interacted, setInteracted] = useState(false);
+  const [showUnmuteHint, setShowUnmuteHint] = useState(true);
 
   useEffect(() => {
     const iframe = iframeRef.current;
     if (!iframe) return;
 
-    const tryPlay = () => {
+    const refresh = () => {
       const src = iframe.src;
-      if (src.includes("autoplay=1")) {
-        iframe.src = src.replace(/&_t=\d+/, "") + "&_t=" + Date.now();
-      }
+      iframe.src = src.replace(/&_t=\d+/, "") + "&_t=" + Date.now();
     };
 
     const onInteraction = () => {
-      setInteracted(true);
       setMuted(false);
-      tryPlay();
+      setShowUnmuteHint(false);
+      refresh();
       document.removeEventListener("touchstart", onInteraction);
       document.removeEventListener("click", onInteraction);
     };
@@ -37,36 +35,62 @@ export default function Hero() {
     };
   }, []);
 
-  const toggleMute = () => {
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setMuted((prev) => !prev);
+    setShowUnmuteHint(false);
   };
 
   return (
     <section id="inicio" className="relative min-h-screen flex flex-col">
       <div className="relative w-full h-screen overflow-hidden bg-black">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/40 z-10 pointer-events-none" />
+        {/* Gradient sutil */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 z-10 pointer-events-none" />
 
+        {/* Video */}
         <div className="absolute inset-0 w-full h-full">
-          <div className="relative w-full h-full">
-            <iframe
-              ref={iframeRef}
-              className="absolute w-full h-full"
-              style={{
-                width: "100%",
-                height: "100%",
-                border: "none",
-                objectFit: "cover",
-                pointerEvents: "none",
-              }}
-              src={`https://www.youtube.com/embed/71H-4FokXB4?autoplay=1&mute=1&loop=1&playlist=71H-4FokXB4&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1`}
-              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-              allowFullScreen
-              title="Fotolab Studio Reel 2026"
-            />
-          </div>
-          <div className="absolute inset-0 bg-black/50 md:bg-black/40 z-10 pointer-events-none" />
+          <iframe
+            ref={iframeRef}
+            className="absolute w-full h-full"
+            style={{
+              width: "100%",
+              height: "100%",
+              border: "none",
+              objectFit: "cover",
+              pointerEvents: "none",
+            }}
+            src={`https://www.youtube.com/embed/71H-4FokXB4?autoplay=1&mute=1&loop=1&playlist=71H-4FokXB4&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1`}
+            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+            allowFullScreen
+            title="Fotolab Studio Reel 2026"
+          />
         </div>
 
+        {/* Hint para activar sonido */}
+        {showUnmuteHint && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setMuted(false);
+              setShowUnmuteHint(false);
+              const iframe = iframeRef.current;
+              if (iframe) {
+                const src = iframe.src;
+                iframe.src = src.replace(/&_t=\d+/, "") + "&_t=" + Date.now();
+              }
+            }}
+            className="absolute inset-0 z-20 flex flex-col items-center justify-center cursor-pointer group"
+          >
+            <div className="bg-white/10 backdrop-blur-lg rounded-full p-6 mb-4 group-hover:bg-white/20 transition-all group-hover:scale-110">
+              <Play size={40} className="text-white ml-1" />
+            </div>
+            <p className="text-white text-sm font-medium tracking-wider uppercase">
+              Toca para activar sonido
+            </p>
+          </button>
+        )}
+
+        {/* Botón mute toggle */}
         <button
           onClick={toggleMute}
           className="absolute bottom-32 md:bottom-40 right-6 z-30 bg-white/10 hover:bg-white/20 backdrop-blur p-3 rounded-full transition-all"
@@ -75,7 +99,8 @@ export default function Hero() {
           {muted ? <VolumeX size={20} /> : <Volume2 size={20} />}
         </button>
 
-        <div className="absolute bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 z-20 w-full max-w-5xl px-6 text-center pointer-events-none">
+        {/* Texto inferior */}
+        <div className="absolute bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 z-20 w-full max-w-5xl px-6 text-center">
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl leading-tight md:leading-none tracking-tight mb-4">
             EL <span className="gradient-text">LABORATORIO</span> DONDE TU
             MARCA COBRA VIDA
@@ -86,6 +111,8 @@ export default function Hero() {
             clientes.
           </p>
         </div>
+
+        {/* Scroll indicator */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
           <div className="w-6 h-10 border-2 border-white/40 rounded-full flex items-start justify-center p-2">
             <div className="w-1 h-2 bg-white/80 rounded-full animate-bounce" />
@@ -93,6 +120,7 @@ export default function Hero() {
         </div>
       </div>
 
+      {/* CTA section */}
       <div className="relative z-20 bg-neutral-950 py-12 md:py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">

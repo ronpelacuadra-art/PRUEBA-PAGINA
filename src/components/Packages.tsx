@@ -211,12 +211,10 @@ export default function Packages() {
             marcas, creadores y artistas que quieren destacar.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {PACKAGES.map((pkg, i) => (
             <PackageCard key={i} pkg={pkg} />
           ))}
-        </div>
-        <div className="max-w-md mx-auto">
           <div className="relative">
             <div className="absolute -top-1 left-1/2 -translate-x-1/2 px-3 md:px-4 py-0.5 md:py-1 bg-gradient-to-r from-pink-500 to-blue-500 rounded-b-lg text-2xs md:text-xs font-bold text-white tracking-wider uppercase z-10">
               Premium
