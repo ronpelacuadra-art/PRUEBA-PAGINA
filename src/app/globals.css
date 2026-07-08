@@ -67,21 +67,6 @@ body {
   border-radius: 10px;
 }
 
-#hero-youtube-player {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  pointer-events: auto;
-}
-#hero-youtube-player iframe {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  pointer-events: none;
-}
-
 .nav-link::after {
   content: '';
   position: absolute;

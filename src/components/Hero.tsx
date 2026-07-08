@@ -4,119 +4,66 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Volume2, VolumeX } from "lucide-react";
 
-declare global {
-  interface Window {
-    onYouTubeIframeAPIReady: () => void;
-    YT: {
-      Player: new (id: string, config: Record<string, unknown>) => YTPlayer;
-      PlayerState: { PLAYING: number };
-    };
-  }
-}
-
-interface YTPlayer {
-  playVideo: () => void;
-  mute: () => void;
-  unMute: () => void;
-  setVolume: (v: number) => void;
-}
-
 export default function Hero() {
-  const playerRef = useRef<YTPlayer | null>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [muted, setMuted] = useState(true);
-  const [playerReady, setPlayerReady] = useState(false);
+  const [interacted, setInteracted] = useState(false);
 
   useEffect(() => {
-    if (typeof window.YT === "undefined") {
-      const tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-      const firstScript = document.getElementsByTagName("script")[0];
-      firstScript?.parentNode?.insertBefore(tag, firstScript);
-    }
+    const iframe = iframeRef.current;
+    if (!iframe) return;
 
-    const createPlayer = () => {
-      if (!window.YT?.Player) return;
-      const p = new window.YT.Player("hero-youtube-player", {
-        videoId: "71H-4FokXB4",
-        playerVars: {
-          autoplay: 1,
-          mute: 1,
-          loop: 1,
-          playlist: "71H-4FokXB4",
-          controls: 0,
-          modestbranding: 1,
-          rel: 0,
-          playsinline: 1,
-          disablekb: 1,
-          enablejsapi: 1,
-          origin: window.location.origin,
-        },
-        events: {
-          onReady: () => {
-            setPlayerReady(true);
-            p.playVideo();
-          },
-        },
-      });
-      playerRef.current = p;
-    };
-
-    if (window.YT?.Player) {
-      createPlayer();
-    } else {
-      window.onYouTubeIframeAPIReady = createPlayer;
-    }
-
-    const unmuteOnInteraction = () => {
-      if (playerRef.current) {
-        playerRef.current.unMute();
-        playerRef.current.setVolume(100);
-        setMuted(false);
+    const tryPlay = () => {
+      const src = iframe.src;
+      if (src.includes("autoplay=1")) {
+        iframe.src = src.replace(/&_t=\d+/, "") + "&_t=" + Date.now();
       }
-      document.removeEventListener("touchstart", unmuteOnInteraction);
-      document.removeEventListener("click", unmuteOnInteraction);
     };
 
-    document.addEventListener("touchstart", unmuteOnInteraction, {
-      once: true,
-    });
-    document.addEventListener("click", unmuteOnInteraction, { once: true });
+    const onInteraction = () => {
+      setInteracted(true);
+      setMuted(false);
+      tryPlay();
+      document.removeEventListener("touchstart", onInteraction);
+      document.removeEventListener("click", onInteraction);
+    };
+
+    document.addEventListener("touchstart", onInteraction, { once: true });
+    document.addEventListener("click", onInteraction, { once: true });
 
     return () => {
-      document.removeEventListener("touchstart", unmuteOnInteraction);
-      document.removeEventListener("click", unmuteOnInteraction);
+      document.removeEventListener("touchstart", onInteraction);
+      document.removeEventListener("click", onInteraction);
     };
   }, []);
 
   const toggleMute = () => {
-    if (!playerRef.current) return;
-    if (muted) {
-      playerRef.current.unMute();
-      playerRef.current.setVolume(100);
-      setMuted(false);
-    } else {
-      playerRef.current.mute();
-      setMuted(true);
-    }
+    setMuted((prev) => !prev);
   };
 
   return (
     <section id="inicio" className="relative min-h-screen flex flex-col">
       <div className="relative w-full h-screen overflow-hidden bg-black">
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/40 z-10 pointer-events-none" />
+
         <div className="absolute inset-0 w-full h-full">
-          <div id="hero-youtube-player" className="absolute inset-0 w-full h-full" />
-          {!playerReady && (
-            <div
-              className="absolute inset-0 bg-cover bg-center"
+          <div className="relative w-full h-full">
+            <iframe
+              ref={iframeRef}
+              className="absolute w-full h-full"
               style={{
-                backgroundImage:
-                  "url(https://img.youtube.com/vi/71H-4FokXB4/maxresdefault.jpg)",
+                width: "100%",
+                height: "100%",
+                border: "none",
+                objectFit: "cover",
+                pointerEvents: "none",
               }}
-            >
-              <div className="absolute inset-0 bg-black/50" />
-            </div>
-          )}
+              src={`https://www.youtube.com/embed/71H-4FokXB4?autoplay=1&mute=1&loop=1&playlist=71H-4FokXB4&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1`}
+              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+              allowFullScreen
+              title="Fotolab Studio Reel 2026"
+            />
+          </div>
           <div className="absolute inset-0 bg-black/50 md:bg-black/40 z-10 pointer-events-none" />
         </div>
 
@@ -128,7 +75,7 @@ export default function Hero() {
           {muted ? <VolumeX size={20} /> : <Volume2 size={20} />}
         </button>
 
-        <div className="absolute bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 z-20 w-full max-w-5xl px-6 text-center">
+        <div className="absolute bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 z-20 w-full max-w-5xl px-6 text-center pointer-events-none">
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl leading-tight md:leading-none tracking-tight mb-4">
             EL <span className="gradient-text">LABORATORIO</span> DONDE TU
             MARCA COBRA VIDA
