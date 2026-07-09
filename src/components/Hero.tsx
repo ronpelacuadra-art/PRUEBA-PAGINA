@@ -4,6 +4,8 @@ import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { Volume2, VolumeX } from "lucide-react";
 
+const BASE_SRC = "https://www.youtube.com/embed/71H-4FokXB4?autoplay=1&mute=1&loop=1&playlist=71H-4FokXB4&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1";
+
 export default function Hero() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [muted, setMuted] = useState(true);
@@ -15,11 +17,12 @@ export default function Hero() {
   }, []);
 
   const toggleMute = () => {
-    setMuted((prev) => !prev);
+    const nextMuted = !muted;
+    setMuted(nextMuted);
     setShowHint(false);
     const iframe = iframeRef.current;
     if (iframe) {
-      iframe.src = iframe.src.replace(/&_t=\d+/, "") + "&_t=" + Date.now();
+      iframe.src = iframe.src.replace(/mute=[01]/, `mute=${nextMuted ? "1" : "0"}`) + `&_t=${Date.now()}`;
     }
   };
 
@@ -31,13 +34,13 @@ export default function Hero() {
         <div className="absolute inset-0 w-full h-full">
           <iframe
             ref={iframeRef}
-            className="hero-video w-full h-full"
+            className="w-full h-full"
             style={{
               border: "none",
               pointerEvents: "none",
               objectFit: "cover",
             }}
-            src={`https://www.youtube.com/embed/71H-4FokXB4?autoplay=1&mute=1&loop=1&playlist=71H-4FokXB4&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1`}
+            src={BASE_SRC}
             allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
             allowFullScreen
             title="Fotolab Studio Reel 2026"
